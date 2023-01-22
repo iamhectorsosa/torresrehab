@@ -19,7 +19,6 @@ export default function Layout({
                 <Sidenav isOpen={isOpen} setIsOpen={setIsOpen}>
                     <Navbar isOpen={isOpen} setIsOpen={setIsOpen} />
                     <Motion>{children}</Motion>
-                    <Footer />
                 </Sidenav>
             </main>
             <ReviewModal />

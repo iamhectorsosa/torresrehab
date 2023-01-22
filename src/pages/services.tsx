@@ -2,10 +2,17 @@ import { nanoid } from "nanoid";
 import { InferGetStaticPropsType } from "next";
 import Incentives from "../components/Home/Incentives";
 import Meta from "../components/Meta";
+import Footer from "../components/Navigation/Footer";
 import ActionButton from "../components/UI/ActionButton";
-import { getIncentives, getPages, getServices } from "../lib/sanity-queries";
+import {
+    getBio,
+    getIncentives,
+    getPages,
+    getServices,
+} from "../lib/sanity-queries";
 
 export default function Home({
+    bio,
     pages,
     services,
     incentives,
@@ -76,17 +83,20 @@ export default function Home({
                     </div>
                 </div>
             </section>
+            <Footer bio={bio} services={services} />
         </>
     );
 }
 
 export async function getStaticProps() {
+    const bio = await getBio();
     const pages = await getPages();
     const services = await getServices();
     const incentives = await getIncentives();
 
     return {
         props: {
+            bio,
             pages,
             services,
             incentives,

@@ -14,6 +14,7 @@ import {
     getReviews,
     getServices,
 } from "../lib/sanity-queries";
+import Footer from "../components/Navigation/Footer";
 
 export default function Home({
     bio,
@@ -34,6 +35,7 @@ export default function Home({
                 <FAQ questions={questions} limit={2} page={pages[3]} />
                 <Contact bio={bio} page={pages[4]} />
             </section>
+            <Footer bio={bio} services={services} />
         </>
     );
 }

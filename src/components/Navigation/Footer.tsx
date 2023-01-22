@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { navItems, serviceItems, socials } from "../../lib/config";
+import { navItems } from "../../lib/config";
 import {
     AiOutlineCompass,
     AiOutlineFacebook,
@@ -8,7 +8,7 @@ import {
     AiOutlineMail,
     AiOutlinePhone,
 } from "react-icons/ai";
-import { Social } from "../../lib/types";
+import { About, Services, Social } from "../../lib/types";
 import { ReactNode } from "react";
 import { nanoid } from "nanoid";
 import Link from "next/link";
@@ -30,7 +30,13 @@ function getIcon(social: Social["type"]): ReactNode {
     }
 }
 
-export default function Footer() {
+export default function Footer({
+    bio,
+    services,
+}: {
+    bio: About;
+    services: Services;
+}) {
     return (
         <footer
             aria-label="Site Footer"
@@ -54,32 +60,56 @@ export default function Footer() {
                             </span>
 
                             <a
-                                href="#"
+                                href={`tel:${bio.phoneNumber}`}
                                 className="block text-xl font-medium text-gray-900 hover:opacity-75 sm:text-2xl"
                             >
-                                +351 961 379 705
+                                {bio.phoneNumber}
                             </a>
                         </p>
 
                         <ul className="mt-8 space-y-1 text-sm text-gray-700">
-                            <li>Monday to Friday: 8am - 5pm</li>
-                            <li>Weekend: 10am - 1pm</li>
+                            <li>Monday to Friday: {bio.weekdaySchedule}</li>
+                            <li>Weekend: {bio.weekendSchedule}</li>
                         </ul>
 
                         <ul className="flex gap-6 mt-8">
-                            {socials.map(({ href, type }) => (
-                                <li key={nanoid()}>
-                                    <a
-                                        href={href}
-                                        rel="noreferrer"
-                                        target="_blank"
-                                        className="text-gray-700 transition hover:opacity-75"
-                                    >
-                                        <span className="sr-only">{type}</span>
-                                        {getIcon(type)}
-                                    </a>
-                                </li>
-                            ))}
+                            <li>
+                                <a
+                                    href={bio.facebook}
+                                    rel="noreferrer"
+                                    target="_blank"
+                                    className="text-gray-700 transition hover:opacity-75"
+                                >
+                                    <span className="sr-only">
+                                        {bio.facebook}
+                                    </span>
+                                    {getIcon("Facebook")}
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href={bio.instagram}
+                                    rel="noreferrer"
+                                    target="_blank"
+                                    className="text-gray-700 transition hover:opacity-75"
+                                >
+                                    <span className="sr-only">
+                                        {bio.instagram}
+                                    </span>
+                                    {getIcon("Instagram")}
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href={`mailto:${bio.email}`}
+                                    rel="noreferrer"
+                                    target="_blank"
+                                    className="text-gray-700 transition hover:opacity-75"
+                                >
+                                    <span className="sr-only">{bio.email}</span>
+                                    {getIcon("Email")}
+                                </a>
+                            </li>
                         </ul>
                     </div>
 
@@ -94,13 +124,13 @@ export default function Footer() {
                                 className="mt-6"
                             >
                                 <ul className="space-y-4 text-sm">
-                                    {serviceItems.map(({ href, label }) => (
+                                    {services.map(({ href, name }) => (
                                         <li key={nanoid()}>
                                             <Link
                                                 className="text-gray-700 transition hover:opacity-75"
-                                                href={href}
+                                                href={`/services`}
                                             >
-                                                {label}
+                                                {name}
                                             </Link>
                                         </li>
                                     ))}

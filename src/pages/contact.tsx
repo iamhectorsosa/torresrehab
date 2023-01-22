@@ -1,11 +1,13 @@
 import { InferGetStaticPropsType } from "next";
 import Contact from "../components/Home/Contact";
 import Meta from "../components/Meta";
-import { getBio, getPages } from "../lib/sanity-queries";
+import Footer from "../components/Navigation/Footer";
+import { getBio, getPages, getServices } from "../lib/sanity-queries";
 
 export default function Home({
     bio,
     pages,
+    services,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
     return (
         <>
@@ -20,6 +22,7 @@ export default function Home({
             <section className="container-width space-y-12 py-12">
                 <Contact bio={bio} page={pages[4]} />
             </section>
+            <Footer bio={bio} services={services} />
         </>
     );
 }
@@ -27,11 +30,13 @@ export default function Home({
 export async function getStaticProps() {
     const bio = await getBio();
     const pages = await getPages();
+    const services = await getServices();
 
     return {
         props: {
             bio,
             pages,
+            services,
         },
         revalidate: 60,
     };
