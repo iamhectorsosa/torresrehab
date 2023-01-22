@@ -91,5 +91,6 @@ export async function getStaticProps() {
             services,
             incentives,
         },
+        revalidate: 60,
     };
 }

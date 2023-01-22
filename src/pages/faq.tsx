@@ -33,5 +33,6 @@ export async function getStaticProps() {
             pages,
             questions,
         },
+        revalidate: 60,
     };
 }
