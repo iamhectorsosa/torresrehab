@@ -55,5 +55,6 @@ export async function getStaticProps() {
             reviews,
             questions,
         },
+        revalidate: 60,
     };
 }

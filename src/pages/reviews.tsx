@@ -33,5 +33,6 @@ export async function getStaticProps() {
             pages,
             reviews,
         },
+        revalidate: 60,
     };
 }
