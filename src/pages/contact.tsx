@@ -12,9 +12,9 @@ export default function Home({
     return (
         <>
             <Meta
-                title={"Contact"}
-                keywords={"Torres, Mobility, Fitness, Training, Portugal"}
-                description={"Contact Torres Training"}
+                title={pages[4].title}
+                keywords={pages[4].keywords}
+                description={pages[4].description}
                 baseUrl={"https://torres-rehab.vercel.app"}
                 path={"/contact"}
                 image={"/home.png"}
