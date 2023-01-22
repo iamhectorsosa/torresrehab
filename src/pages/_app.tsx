@@ -4,13 +4,14 @@ import Layout from "../components/Layout";
 import { Inter } from "@next/font/google";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { trpc } from "../utils/trpc";
 
 const inter = Inter({
     subsets: ["latin"],
     variable: "--font-inter",
 });
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
     const router = useRouter();
     useEffect(() => {
         document.querySelector(".drawer-content")?.scrollTo({ top: 0 });
@@ -21,3 +22,5 @@ export default function App({ Component, pageProps }: AppProps) {
         </Layout>
     );
 }
+
+export default trpc.withTRPC(App);

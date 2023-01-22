@@ -14,7 +14,7 @@ export default function Navbar({
         <nav>
             <div className="navigation-width">
                 <div className="flex items-center justify-between">
-                    <Link className="font-bold block text-2xl" href="/">
+                    <Link className="font-bold flex gap-2 text-2xl" href="/">
                         <h2>Torres Rehab</h2>
                     </Link>
 

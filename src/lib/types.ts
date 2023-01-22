@@ -60,9 +60,8 @@ export type Incentives = Array<{
 
 export type Reviews = Array<{
     read: boolean;
-    rating: number;
     title: string;
-    description: string;
+    message: string;
     name: string;
     date: string;
 }>;

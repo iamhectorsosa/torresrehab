@@ -10,18 +10,13 @@ export default {
       initialValue: false,
     },
     {
-      name: 'rating',
-      title: 'Rating',
-      type: 'number',
-    },
-    {
       name: 'title',
       title: 'Title',
       type: 'string',
     },
     {
-      name: 'description',
-      title: 'Description',
+      name: 'message',
+      title: 'Message',
       type: 'text',
     },
     {
@@ -51,7 +46,7 @@ export default {
     prepare({title, read, rating}: Record<string, string>) {
       return {
         title: title,
-        subtitle: `${rating}/5 - ${read ? 'read' : 'unread'}`,
+        subtitle: `${read ? 'Read' : 'Unread'}`,
         media: <>❤️</>,
       }
     },

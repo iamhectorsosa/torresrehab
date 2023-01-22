@@ -79,9 +79,8 @@ export async function getIncentives() {
 
 const reviewsFields = `{
     read,
-    rating,
     title,
-    description,
+    message,
     name,
     date
 }`;
