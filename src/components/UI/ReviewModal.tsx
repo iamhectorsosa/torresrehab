@@ -32,7 +32,10 @@ export default function ReviewModal() {
         <>
             <input type="checkbox" id="review-modal" className="modal-toggle" />
             <label htmlFor="review-modal" className="modal cursor-pointer">
-                <label className="modal-box relative space-y-4" htmlFor="">
+                <label
+                    className="modal-box relative space-y-4 bg-white"
+                    htmlFor=""
+                >
                     <h3 className="text-lg font-bold">
                         {" "}
                         {mutation.isSuccess
