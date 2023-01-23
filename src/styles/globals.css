@@ -4,10 +4,10 @@
 
 @layer components {
     .navigation-width {
-        @apply mx-auto max-w-6xl p-6 bg-white;
+        @apply mx-auto max-w-6xl p-6;
     }
     .container-width {
-        @apply mx-auto max-w-5xl p-6 bg-white;
+        @apply mx-auto max-w-5xl p-6;
     }
 }
 
@@ -26,10 +26,6 @@ body {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-}
-
-body {
-    @apply bg-white text-black antialiased;
 }
 
 main h1,

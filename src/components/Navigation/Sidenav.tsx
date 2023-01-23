@@ -13,7 +13,7 @@ export default function Sidenav({
     children: ReactNode;
 }) {
     return (
-        <aside className="drawer absolute">
+        <aside className="drawer absolute bg-white text-black">
             <input
                 checked={isOpen}
                 readOnly
@@ -22,12 +22,12 @@ export default function Sidenav({
                 className="drawer-toggle"
             />
             <div className="drawer-content">{children}</div>
-            <div className="drawer-side">
+            <div className="drawer-side  ">
                 <button
                     onClick={() => setIsOpen(!isOpen)}
                     className="drawer-overlay"
                 ></button>
-                <ul className="menu p-6 w-80 bg-base-100 text-base-content">
+                <ul className="menu p-6 w-80 bg-white text-black">
                     <Link className="font-bold block text-2xl pb-4" href="/">
                         <h2>Torres Training</h2>
                     </Link>
