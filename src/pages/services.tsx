@@ -41,7 +41,7 @@ export default function Home({
                     <div className="space-y-12 sm:space-y-8">
                         {services.map((i, index) => (
                             <div
-                                className="grid sm:grid-cols-5 items-center
+                                className="grid sm:grid-cols-5 sm:items-center
                              gap-4"
                                 key={nanoid()}
                             >
@@ -49,12 +49,12 @@ export default function Home({
                                 <img
                                     alt={i.name}
                                     src={i.image}
-                                    className={`max-h-60 w-full object-cover col-span-3 rounded ${
+                                    className={`max-h-60 w-full object-cover sm:col-span-3 rounded ${
                                         index % 2 === 0 ? "sm:order-last" : ""
                                     }`}
                                 />
 
-                                <div className="space-y-3 col-span-2">
+                                <div className="space-y-3 sm:col-span-2">
                                     <h2 className="text-2xl font-bold sm:text-3xl">
                                         {i.name}
                                     </h2>
