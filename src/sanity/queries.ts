@@ -1,12 +1,10 @@
-import sanity from "./sanity-client";
-import {
-    About,
-    Services,
-    Pages,
-    Incentives,
-    Reviews,
-    Questions,
-} from "./types";
+import sanity from "./client";
+import { About } from "./schemas/about";
+import { Questions } from "./schemas/faqs";
+import { Incentives } from "./schemas/incentives";
+import { Pages } from "./schemas/pages";
+import { Reviews } from "./schemas/reviews";
+import { Services } from "./schemas/services";
 
 const bioFields = `{
     name,
@@ -24,8 +22,8 @@ const bioFields = `{
 
 const allPostsQuery = `*[_type == "about" && !(_id in path("drafts.**"))][0] | ${bioFields}`;
 
-export async function getBio() {
-    return (await sanity.fetch(allPostsQuery)) as About;
+export async function getBio(): Promise<About> {
+  return await sanity.fetch(allPostsQuery);
 }
 
 const pageFields = `{
@@ -39,8 +37,8 @@ const pageFields = `{
 
 const allPages = `*[_type == "pages" && !(_id in path("drafts.**"))] | order(order asc) ${pageFields}`;
 
-export async function getPages() {
-    return (await sanity.fetch(allPages)) as Pages;
+export async function getPages(): Promise<Pages[]> {
+  return await sanity.fetch(allPages);
 }
 
 const servicesFields = `{
@@ -56,8 +54,8 @@ const servicesFields = `{
 
 const allServices = `*[_type == "services" && !(_id in path("drafts.**"))] | order(order asc) ${servicesFields}`;
 
-export async function getServices() {
-    return (await sanity.fetch(allServices)) as Services;
+export async function getServices(): Promise<Services[]> {
+  return await sanity.fetch(allServices);
 }
 
 const incentivesFields = `{
@@ -73,8 +71,8 @@ const incentivesFields = `{
 
 const allIncentives = `*[_type == "incentives" && !(_id in path("drafts.**"))] | order(order asc) ${incentivesFields}`;
 
-export async function getIncentives() {
-    return (await sanity.fetch(allIncentives)) as Incentives;
+export async function getIncentives(): Promise<Incentives[]> {
+  return await sanity.fetch(allIncentives);
 }
 
 const reviewsFields = `{
@@ -87,8 +85,8 @@ const reviewsFields = `{
 
 const allReviews = `*[_type == "reviews" && !(_id in path("drafts.**"))] | order(_createdAt desc) ${reviewsFields}`;
 
-export async function getReviews() {
-    return (await sanity.fetch(allReviews)) as Reviews;
+export async function getReviews(): Promise<Reviews[]> {
+  return await sanity.fetch(allReviews);
 }
 
 const faqFields = `{
@@ -100,6 +98,6 @@ const faqFields = `{
 
 const allFAQs = `*[_type == "questions" && !(_id in path("drafts.**"))] | order(order asc) ${faqFields}`;
 
-export async function getFAQs() {
-    return (await sanity.fetch(allFAQs)) as Questions;
+export async function getFAQs(): Promise<Questions[]> {
+  return await sanity.fetch(allFAQs);
 }
