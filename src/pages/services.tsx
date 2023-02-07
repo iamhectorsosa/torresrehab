@@ -24,7 +24,7 @@ export default function Home({
         image={"/home.png"}
       />
       <section className="container-width space-y-12 py-12">
-        <div className="space-y-12">
+        <div className="space-y-6">
           <header className="pb-2">
             <h2 className="text-3xl font-bold sm:text-4xl text-center">
               {pages[0].headline}
@@ -34,31 +34,34 @@ export default function Home({
               {pages[0].tagline}
             </p>
           </header>
-          <div className="space-y-12 sm:space-y-8">
+          <div>
             {services.map((i, index) => (
-              <div
-                className="grid sm:grid-cols-5 sm:items-center
-                             gap-4"
-                key={nanoid()}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  alt={i.name}
-                  src={i.image}
-                  className={`min-h-60 w-full object-cover sm:col-span-3 rounded ${
-                    index % 2 === 0 ? "sm:order-last" : ""
-                  }`}
-                />
-                <div className="space-y-3 sm:col-span-2">
-                  <h2 className="text-2xl font-bold sm:text-3xl">{i.name}</h2>
-                  <div className="grid sm:grid-cols-2 text-sm">
-                    <p className="text-gray-700">Location: {i.location}</p>
-                    <p className="text-gray-700">Time: {i.time}</p>
+              <div key={index} className="space-y-4 md:space-y-6 py-4">
+                <header className="flex flex-col justify-center sm:items-center gap-2">
+                  <h2 className="text-4xl font-bold md:text-5xl">{i.name}</h2>
+                  <p className="flex sm:gap-2 flex-col sm:flex-row text-gray-500">
+                    <span>Location: {i.location}</span>
+                    <span className="hidden sm:inline">·</span>
+                    <span>Time: {i.time}</span>
+                  </p>
+                </header>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div
+                    className={`space-y-4 ${
+                      index % 2 === 0 ? "md:order-last" : ""
+                    }`}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      alt={i.name}
+                      src={i.image}
+                      className="min-h-80 md:h-96 w-full object-cover rounded"
+                    />
+                    <ActionButton href={i.href} label="Book an appointment" />
                   </div>
-                  <div className="prose prose-slate min-w-full text-slate-800">
+                  <div className="prose prose-slate min-w-full text-slate-800 md:max-h-[27.5rem] md:overflow-scroll">
                     <PortableText value={i.description} />
                   </div>
-                  <ActionButton href={i.href} label="Book Now" />
                 </div>
               </div>
             ))}
