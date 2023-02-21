@@ -70,7 +70,7 @@ export function TypographyLarge({ children }: { children: React.ReactNode }) {
 }
 
 export function TypographySmall({ children }: { children: React.ReactNode }) {
-  return <small className="text-sm leading-none block">{children}</small>;
+  return <small className="text-sm leading-relaxed block">{children}</small>;
 }
 
 export function TypographySubtle({ children }: { children: React.ReactNode }) {

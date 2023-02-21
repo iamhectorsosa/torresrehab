@@ -14,6 +14,7 @@ import { nanoid } from "nanoid";
 import Link from "next/link";
 import { About } from "@/sanity/schemas/about";
 import { Services } from "@/sanity/schemas/services";
+import { TypographyLarge, TypographySmall } from "../UI/typography";
 
 function getIcon(social: Social["type"]): ReactNode {
   switch (social) {
@@ -40,10 +41,7 @@ export default function Footer({
   services: Services[];
 }) {
   return (
-    <footer
-      aria-label="Site Footer"
-      className="bg-white lg:grid lg:grid-cols-5"
-    >
+    <footer aria-label="Site Footer" className=" lg:grid lg:grid-cols-5">
       <div className="relative block h-32 lg:col-span-2 lg:h-full">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -56,23 +54,25 @@ export default function Footer({
       <div className="px-6 py-16 lg:col-span-3 lg:px-8">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
           <div>
-            <p>
-              <span className="text-xs tracking-wide text-gray-500 uppercase">
-                Get in touch
-              </span>
-
-              <a
-                href={`tel:${bio.phoneNumber}`}
-                className="block text-xl font-medium text-gray-900 hover:opacity-75 sm:text-2xl"
-              >
-                {bio.phoneNumber}
-              </a>
-            </p>
-
-            <ul className="mt-8 space-y-1 text-sm text-gray-700">
-              <li>Monday to Friday: {bio.weekdaySchedule}</li>
-              <li>Weekend: {bio.weekendSchedule}</li>
-            </ul>
+            <div>
+              <TypographySmall>
+                <span className="uppercase">Get in touch</span>
+              </TypographySmall>
+              <TypographyLarge>
+                <a
+                  href={`tel:${bio.phoneNumber}`}
+                  className="block hover:opacity-75 w-fit"
+                >
+                  {bio.phoneNumber}
+                </a>
+              </TypographyLarge>
+            </div>
+            <div className="mt-4 space-y-1">
+              <TypographySmall>
+                Monday to Friday: {bio.weekdaySchedule}
+              </TypographySmall>
+              <TypographySmall>Weekends: {bio.weekendSchedule}</TypographySmall>
+            </div>
 
             <ul className="flex gap-6 mt-8">
               <li>
@@ -80,7 +80,7 @@ export default function Footer({
                   href={bio.facebook}
                   rel="noreferrer"
                   target="_blank"
-                  className="text-gray-700 transition hover:opacity-75"
+                  className=" transition hover:opacity-75"
                 >
                   <span className="sr-only">{bio.facebook}</span>
                   {getIcon("Facebook")}
@@ -91,7 +91,7 @@ export default function Footer({
                   href={bio.instagram}
                   rel="noreferrer"
                   target="_blank"
-                  className="text-gray-700 transition hover:opacity-75"
+                  className=" transition hover:opacity-75"
                 >
                   <span className="sr-only">{bio.instagram}</span>
                   {getIcon("Instagram")}
@@ -102,7 +102,7 @@ export default function Footer({
                   href={`mailto:${bio.email}`}
                   rel="noreferrer"
                   target="_blank"
-                  className="text-gray-700 transition hover:opacity-75"
+                  className=" transition hover:opacity-75"
                 >
                   <span className="sr-only">{bio.email}</span>
                   {getIcon("Email")}
@@ -111,16 +111,16 @@ export default function Footer({
             </ul>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-9 sm:grid-cols-2">
             <div>
-              <p className="font-medium text-gray-900">Services</p>
+              <p className="font-medium">Services</p>
 
               <nav aria-label="Footer Navigation - Services" className="mt-6">
                 <ul className="space-y-4 text-sm">
                   {services.map(({ name }) => (
                     <li key={nanoid()}>
                       <Link
-                        className="text-gray-700 transition hover:opacity-75"
+                        className=" transition hover:opacity-75"
                         href={`/services`}
                       >
                         {name}
@@ -132,7 +132,7 @@ export default function Footer({
             </div>
 
             <div>
-              <p className="font-medium text-gray-900">More</p>
+              <p className="font-medium">More</p>
 
               <nav aria-label="Footer Navigation - Company" className="mt-6">
                 <ul className="space-y-4 text-sm">
@@ -141,7 +141,7 @@ export default function Footer({
                     .map(({ href, label }) => (
                       <li key={nanoid()}>
                         <Link
-                          className="text-gray-700 transition hover:opacity-75"
+                          className=" transition hover:opacity-75"
                           href={href}
                         >
                           {label}
@@ -154,22 +154,19 @@ export default function Footer({
           </div>
         </div>
 
-        <div className="pt-12 mt-12 border-t border-gray-100">
+        <div className="pt-12 mt-12 border-t border-gray-200 dark:border-gray-500">
           <div className="sm:flex sm:items-center sm:justify-between">
             <nav aria-label="Footer Navigation - Support">
               <ul className="flex flex-wrap gap-4 text-xs">
                 <li>
-                  <Link
-                    href="/faq"
-                    className="text-gray-500 transition hover:opacity-75"
-                  >
+                  <Link href="/faq" className="transition hover:opacity-75">
                     Frequently Asked Questions
                   </Link>
                 </li>
               </ul>
             </nav>
 
-            <p className="mt-8 text-xs text-gray-500 sm:mt-0">
+            <p className="mt-8 text-xs  sm:mt-0">
               &copy; {dayjs().format("YYYY")} Fabio Torres. All rights reserved.
             </p>
           </div>

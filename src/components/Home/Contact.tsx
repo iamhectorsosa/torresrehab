@@ -40,7 +40,7 @@ export default function Component({
   }
 
   return (
-    <div className="space-y-8 bg-gray-50 dark:bg-slate-800 p-16 rounded">
+    <div className="space-y-8 bg-gray-50 dark:bg-slate-800 py-9 px-6 md:p-9 rounded">
       <article className="space-y-6">
         <header className="text-center space-y-2">
           <TypographyH1>
@@ -48,9 +48,9 @@ export default function Component({
             {mutation.isSuccess ? "Thank you for your message" : page.headline}
           </TypographyH1>
         </header>
-        <div className="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
-          <div className="lg:col-span-2 lg:py-12 space-y-6">
-            <div className="space-y-4 text-center lg:text-left">
+        <div className="grid grid-cols-1 gap-x-16 gap-y-8 md:grid-cols-5 max-w-md md:max-w-none mx-auto">
+          <div className="md:col-span-2 md:py-12 space-y-6">
+            <div className="space-y-4 text-center md:text-left">
               <TypographyLead>{page.tagline}</TypographyLead>
               <p>
                 <a
@@ -60,13 +60,17 @@ export default function Component({
                   {bio.phoneNumber}
                 </a>
               </p>
-              <TypographySmall>
-                Monday to Friday: {bio.weekdaySchedule}
-              </TypographySmall>
-              <TypographySmall>Weekends: {bio.weekendSchedule}</TypographySmall>
+              <div className="space-y-1">
+                <TypographySmall>
+                  Monday to Friday: {bio.weekdaySchedule}
+                </TypographySmall>
+                <TypographySmall>
+                  Weekends: {bio.weekendSchedule}
+                </TypographySmall>
+              </div>
             </div>
           </div>
-          <div className="rounded-lg bg-white dark:bg-slate-900 p-8 shadow-lg lg:col-span-3 lg:p-12">
+          <div className="rounded-lg bg-white dark:bg-slate-900 p-8 shadow-lg md:col-span-3 md:p-12">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div>
                 <label className="sr-only" htmlFor="name">
@@ -83,7 +87,7 @@ export default function Component({
                 />
               </div>
 
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                 <div>
                   <label className="sr-only" htmlFor="email">
                     Email

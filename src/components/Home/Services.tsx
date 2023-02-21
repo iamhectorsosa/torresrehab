@@ -28,7 +28,7 @@ export default function Component({
             <Link
               href={`/services#${i.name.toLowerCase().replaceAll(" ", "-")}`}
               key={index}
-              className="rounded overflow-hidden shadow hover:shadow-lg transition-shadow"
+              className="rounded overflow-hidden shadow hover:shadow-lg transition-shadow dark:border dark:border-slate-600 dark:hover:border-slate-500 dark:transition-colors"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
