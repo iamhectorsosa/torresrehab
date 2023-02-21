@@ -14,7 +14,7 @@ import {
   getReviews,
   getServices,
 } from "@/sanity/queries";
-import Footer from "../components/Navigation/Footer";
+import Footer from "../components/Layout/Footer";
 
 export default function Home({
   bio,

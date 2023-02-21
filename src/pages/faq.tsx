@@ -2,7 +2,7 @@ import Meta from "../components/Meta";
 import FAQ from "../components/Home/FAQ";
 import { InferGetStaticPropsType } from "next";
 import { getBio, getFAQs, getPages, getServices } from "@/sanity/queries";
-import Footer from "../components/Navigation/Footer";
+import Footer from "../components/Layout/Footer";
 
 export default function Home({
   bio,
