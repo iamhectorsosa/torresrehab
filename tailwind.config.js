@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ["var(--font-inter)"],
+      zilla: ["var(--font-zilla)"],
     },
   },
   plugins: [

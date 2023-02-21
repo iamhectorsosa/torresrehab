@@ -2,7 +2,7 @@ import { nanoid } from "nanoid";
 import { InferGetStaticPropsType } from "next";
 import Incentives from "../components/Home/Incentives";
 import Meta from "../components/Meta";
-import Footer from "../components/Navigation/Footer";
+import Footer from "../components/Layout/Footer";
 import ActionButton from "../components/UI/ActionButton";
 import { getBio, getIncentives, getPages, getServices } from "@/sanity/queries";
 import { PortableText } from "@portabletext/react";
