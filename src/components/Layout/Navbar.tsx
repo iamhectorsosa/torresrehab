@@ -9,7 +9,7 @@ export default function Navbar({}: {}) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <nav
-      className={`sticky top-0 bg-white z-10 shadow-sm ${
+      className={`sticky top-0 bg-white dark:bg-slate-900 z-10 shadow-sm ${
         isOpen ? "h-screen" : ""
       }`}
     >
@@ -62,7 +62,7 @@ export default function Navbar({}: {}) {
         </div>
       </div>
       {isOpen && (
-        <div className="bg-white h-full">
+        <div className="bg-white dark:bg-slate-900 h-full">
           <nav aria-label="Site Nav" className="flex flex-col p-4 gap-4">
             {navItems.map(({ href, label }) => (
               <Link tabIndex={-1} href={href} key={nanoid()}>

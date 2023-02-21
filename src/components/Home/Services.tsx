@@ -1,8 +1,14 @@
 import { Pages } from "@/sanity/schemas/pages";
 import { type Services } from "@/sanity/schemas/services";
-import { nanoid } from "nanoid";
+import Link from "next/link";
 
-import ActionButton from "../UI/ActionButton";
+import { Button } from "../UI/button";
+import {
+  TypographyH1,
+  TypographyH2,
+  TypographyLead,
+  TypographySubtle,
+} from "../UI/typography";
 export default function Component({
   services,
   page,
@@ -12,21 +18,17 @@ export default function Component({
 }) {
   return (
     <div className="space-y-8">
-      <div className="space-y-8">
-        <header className="pb-2">
-          <h2 className="text-3xl font-bold sm:text-4xl text-center">
-            {page.headline}
-          </h2>
-
-          <p className="text-center pt-4 text-lg text-gray-700">
-            {page.tagline}
-          </p>
+      <article className="space-y-6">
+        <header className="md:text-center space-y-2">
+          <TypographyH1>{page.headline}</TypographyH1>
+          <TypographyLead>{page.tagline}</TypographyLead>
         </header>
         <div className="grid sm:grid-cols-2 gap-4">
-          {services.map((i) => (
-            <div
-              key={nanoid()}
-              className="block rounded border overflow-hidden border-gray-100 shadow-sm "
+          {services.map((i, index) => (
+            <Link
+              href={`/services#${i.name.toLowerCase().replaceAll(" ", "-")}`}
+              key={index}
+              className="rounded overflow-hidden shadow hover:shadow-lg transition-shadow"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -34,18 +36,20 @@ export default function Component({
                 src={i.image}
                 className="max-h-60 w-full object-cover"
               />
-
-              <div className="space-y-3 py-6 p-4">
-                <h2 className="text-2xl font-bold sm:text-3xl">{i.name}</h2>
-
-                <p className="text-gray-700">{i.tagline}</p>
+              <div className="space-y-3 p-4">
+                <TypographyH2>{i.name}</TypographyH2>
+                <TypographySubtle>{i.tagline}</TypographySubtle>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
-      </div>
-      <footer className="flex flex-col justify-center gap-6 items-center">
-        <ActionButton href="/services" label="Learn more" />
+      </article>
+      <footer className="grid place-content-center">
+        <Link tabIndex={-1} href="/services">
+          <Button variant="subtle" size="lg">
+            Explore our services
+          </Button>
+        </Link>
       </footer>
     </div>
   );

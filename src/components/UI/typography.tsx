@@ -1,6 +1,15 @@
-export function TypographyH1({ children }: { children: React.ReactNode }) {
+export function TypographyH1({
+  children,
+  id,
+}: {
+  children: React.ReactNode;
+  id?: string;
+}) {
   return (
-    <h1 className="font-zilla scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+    <h1
+      id={id}
+      className="font-zilla scroll-m-36 md:scroll-m-40 text-4xl font-extrabold tracking-tight lg:text-5xl"
+    >
       {children}
     </h1>
   );
@@ -16,7 +25,7 @@ export function TypographyH2({ children }: { children: React.ReactNode }) {
 
 export function TypographyH3({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="font-zilla mt-8 scroll-m-20 text-2xl font-semibold tracking-tight">
+    <h3 className="font-zilla scroll-m-20 text-2xl font-medium tracking-tight">
       {children}
     </h3>
   );
@@ -24,23 +33,31 @@ export function TypographyH3({ children }: { children: React.ReactNode }) {
 
 export function TypographyH4({ children }: { children: React.ReactNode }) {
   return (
-    <h4 className="font-zilla mt-8 scroll-m-20 text-xl font-semibold tracking-tight">
+    <h4 className="font-zilla scroll-m-20 text-xl font-semibold tracking-tight">
       {children}
     </h4>
   );
 }
 
 export function TypographyP({ children }: { children: React.ReactNode }) {
-  return <p className="leading-7 [&:not(:first-child)]:mt-6">{children}</p>;
+  return (
+    <p className="leading-7 font-light [&:not(:first-child)]:mt-6">
+      {children}
+    </p>
+  );
 }
 
 export function TypographyList({ children }: { children: React.ReactNode }) {
-  return <ul className="my-6 ml-6 list-disc [&>li]:mt-2">{children}</ul>;
+  return (
+    <ul className="my-6 ml-6 list-disc space-y-2 font-light">{children}</ul>
+  );
 }
 
 export function TypographyLead({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-xl text-slate-700 dark:text-slate-400">{children}</p>
+    <p className="text-xl text-slate-700 dark:text-slate-400 font-light">
+      {children}
+    </p>
   );
 }
 
@@ -53,11 +70,11 @@ export function TypographyLarge({ children }: { children: React.ReactNode }) {
 }
 
 export function TypographySmall({ children }: { children: React.ReactNode }) {
-  return <small className="text-sm font-medium leading-none">{children}</small>;
+  return <small className="text-sm leading-none block">{children}</small>;
 }
 
 export function TypographySubtle({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-sm text-slate-500 dark:text-slate-400">{children}</p>
+    <p className="text-slate-500 dark:text-slate-400 font-light">{children}</p>
   );
 }

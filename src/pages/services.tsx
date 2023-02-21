@@ -1,4 +1,3 @@
-import { nanoid } from "nanoid";
 import { InferGetStaticPropsType } from "next";
 import Incentives from "../components/Home/Incentives";
 import Meta from "../components/Meta";
@@ -6,6 +5,7 @@ import Footer from "../components/Layout/Footer";
 import ActionButton from "../components/UI/ActionButton";
 import { getBio, getIncentives, getPages, getServices } from "@/sanity/queries";
 import { PortableText } from "@portabletext/react";
+import { TypographyH1 } from "@/components/UI/typography";
 
 export default function Home({
   bio,
@@ -38,7 +38,9 @@ export default function Home({
             {services.map((i, index) => (
               <div key={index} className="space-y-4 md:space-y-6 py-4">
                 <header className="flex flex-col justify-center sm:items-center gap-2">
-                  <h2 className="text-4xl font-bold md:text-5xl">{i.name}</h2>
+                  <TypographyH1 id={i.name.toLowerCase().replaceAll(" ", "-")}>
+                    {i.name}
+                  </TypographyH1>
                   <p className="flex sm:gap-2 flex-col sm:flex-row text-gray-500">
                     <span>Location: {i.location}</span>
                     <span className="hidden sm:inline">·</span>

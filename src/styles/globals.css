@@ -26,12 +26,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-main h2,
-h3,
-h4 {
-  @apply tracking-tight font-zilla text-slate-800 antialiased;
-}
-
-main h1 {
-  @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-slate-900 dark:text-slate-300;
+main {
+  @apply bg-white dark:bg-slate-900 dark:text-white;
 }
