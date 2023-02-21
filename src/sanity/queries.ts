@@ -11,6 +11,7 @@ const bioFields = `{
     title,
     'image': image.asset->url,
     tagline,
+    bio,
     description,
     weekdaySchedule,
     weekendSchedule,

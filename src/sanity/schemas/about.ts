@@ -17,7 +17,10 @@ const aboutSchema = z.object({
 });
 
 export type About = SanityDocument &
-  z.infer<typeof aboutSchema> & { description: TypedObject | TypedObject[] };
+  z.infer<typeof aboutSchema> & {
+    bio: TypedObject | TypedObject[];
+    description: TypedObject | TypedObject[];
+  };
 
 const about = {
   name: "about",
@@ -44,6 +47,12 @@ const about = {
       name: "tagline",
       title: "Tagline",
       type: "string",
+    },
+    {
+      name: "bio",
+      title: "Bio",
+      type: "array",
+      of: [{ type: "block" }],
     },
     {
       name: "description",
