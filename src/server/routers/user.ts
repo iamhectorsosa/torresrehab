@@ -1,5 +1,4 @@
 import { t } from "../trpc";
-import { reviewSchema } from "../../components/UI/ReviewModal";
 import { contactSchema } from "../../components/Home/Contact";
 import sanity from "@/sanity/client";
 
