@@ -16,10 +16,7 @@ export default function Navbar({}: {}) {
       <div className="navigation-width">
         <div className="flex items-center justify-between">
           <Link href="/">
-            <TypographyH1>
-              <span className="hidden sm:inline">Torres</span>
-              <span className="inline sm:hidden">T.</span> Rehab
-            </TypographyH1>
+            <TypographyH1>Torres Rehab</TypographyH1>
           </Link>
           <nav aria-label="Site Nav" className="hidden md:flex items-center">
             {navItems.map(({ href, label }) => (

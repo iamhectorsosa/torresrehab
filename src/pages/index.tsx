@@ -31,7 +31,7 @@ export default function Home({
         <Bio bio={bio} />
         <Services services={services} page={pages[0]} />
         <Incentives incentives={incentives} limit={3} page={pages[1]} />
-        <Reviews reviews={reviews} limit={3} page={pages[2]} />
+        <Reviews reviews={reviews} limit={5} page={pages[2]} />
         <FAQ questions={questions} limit={2} page={pages[3]} />
         <Contact bio={bio} page={pages[4]} />
       </section>

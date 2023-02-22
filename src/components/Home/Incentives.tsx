@@ -18,7 +18,7 @@ export default function Component({
     <div className="space-y-8">
       <article className="space-y-6">
         <header className="md:text-center space-y-2">
-          <TypographyH1>{page.headline}</TypographyH1>
+          <TypographyH1 id="benefits">{page.headline}</TypographyH1>
           <TypographyLead>{page.tagline}</TypographyLead>
         </header>
         <dl className="grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8">
@@ -40,7 +40,7 @@ export default function Component({
       </article>
       <footer className="grid place-content-center gap-6 justify-items-center">
         {limit ? (
-          <Link tabIndex={-1} href="/services">
+          <Link tabIndex={-1} href="/services#benefits">
             <Button variant="subtle" size="lg">
               Learn more about our the benefits
             </Button>

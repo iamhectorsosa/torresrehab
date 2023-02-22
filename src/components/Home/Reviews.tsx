@@ -3,7 +3,12 @@ import { Reviews } from "@/sanity/schemas/reviews";
 import dayjs from "dayjs";
 import Link from "next/link";
 import { Button } from "../UI/button";
-import { TypographyH1, TypographyLead } from "../UI/typography";
+import {
+  TypographyH1,
+  TypographyLead,
+  TypographyP,
+  TypographySubtle,
+} from "../UI/typography";
 
 export default function Component({
   reviews,
@@ -28,16 +33,18 @@ export default function Component({
         <div className="lg:col-span-2 lg:mx-0">
           <div className="carousel gap-4">
             {reviews.slice(0, limit).map((i, index) => (
-              <div key={index} className="carousel-item">
-                <blockquote className="max-w-sm sm:max-w-md bg-white dark:bg-slate-900/75 p-10">
+              <div key={index} className="carousel-item h-fit">
+                <blockquote className="max-w-xs sm:max-w-md bg-white dark:bg-slate-700/75 p-6">
                   <div className="space-y-4">
-                    <h3 className="text-xl font-bold text-pink-600 sm:text-2xl">
+                    <h3 className="text-xl font-bold text-pink-500 dark:text-white sm:text-2xl">
                       {i.title}
                     </h3>
-                    <p className="text-gray-600">{i.message}</p>
-                    <p className="text-gray-500 uppercase text-sm tracking-wide">
-                      - {i.name} · {dayjs(i.date).format("DD MMM YYYY")}
-                    </p>
+                    <div className="line-clamp-6">
+                      <TypographyP>{i.message}</TypographyP>
+                    </div>
+                    <TypographySubtle>
+                      - <span className="uppercase">{i.name}</span>
+                    </TypographySubtle>
                   </div>
                 </blockquote>
               </div>
@@ -48,15 +55,15 @@ export default function Component({
         <div className="grid gap-4">
           {reviews.map((i, index) => (
             <div key={index}>
-              <blockquote className="bg-white dark:bg-slate-900/75 p-10 rounded">
+              <blockquote className="bg-white dark:bg-slate-700/75 p-10 rounded">
                 <div className="space-y-4">
-                  <h3 className="text-xl font-bold text-pink-600 dark:text-slate-200">
+                  <h3 className="text-xl font-bold text-pink-500 dark:text-white sm:text-2xl">
                     {i.title}
                   </h3>
-                  <p className="text-gray-600">{i.message}</p>
-                  <p className="text-gray-500 uppercase text-xs tracking-wide">
-                    - {i.name} · {dayjs(i.date).format("DD MMM YYYY")}
-                  </p>
+                  <TypographyP>{i.message}</TypographyP>
+                  <TypographySubtle>
+                    - <span className="uppercase">{i.name}</span>
+                  </TypographySubtle>
                 </div>
               </blockquote>
             </div>
@@ -67,7 +74,7 @@ export default function Component({
         {limit ? (
           <Link tabIndex={-1} href="/reviews">
             <Button variant="subtle" size="lg">
-              Read more reviews
+              Read the full reviews
             </Button>
           </Link>
         ) : (

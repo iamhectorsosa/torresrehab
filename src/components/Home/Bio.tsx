@@ -37,7 +37,7 @@ export default function Component({ bio }: { bio: About }) {
         <img
           alt={bio.name}
           src={bio.image}
-          className="max-h-60 md:max-h-96 w-full object-cover rounded"
+          className="max-h-60 md:max-h-96 w-full object-cover rounded shadow-lg"
         />
         <div>
           <h3 className="font-zilla text-2xl font-semibold tracking-tight">

@@ -75,6 +75,8 @@ export function TypographySmall({ children }: { children: React.ReactNode }) {
 
 export function TypographySubtle({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-slate-500 dark:text-slate-400 font-light">{children}</p>
+    <p className="text-slate-500 dark:text-slate-400 font-light text-sm">
+      {children}
+    </p>
   );
 }
