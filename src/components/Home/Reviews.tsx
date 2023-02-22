@@ -20,7 +20,7 @@ export default function Component({
   page: Pages[number];
 }) {
   return (
-    <div
+    <section
       className={`bg-gray-50 dark:bg-slate-800 rounded px-4 sm:px-6 ${
         limit ? "space-y-6 py-8" : "space-y-8 py-12"
       }`}
@@ -90,6 +90,6 @@ export default function Component({
           </>
         )}
       </footer>
-    </div>
+    </section>
   );
 }

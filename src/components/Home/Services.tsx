@@ -17,7 +17,7 @@ export default function Component({
   page: Pages[number];
 }) {
   return (
-    <div className="space-y-8">
+    <section className="space-y-8">
       <article className="space-y-6">
         <header className="md:text-center space-y-2">
           <TypographyH1>{page.headline}</TypographyH1>
@@ -51,6 +51,6 @@ export default function Component({
           </Button>
         </Link>
       </footer>
-    </div>
+    </section>
   );
 }

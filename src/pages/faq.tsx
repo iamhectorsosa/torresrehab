@@ -2,7 +2,7 @@ import Meta from "../components/Meta";
 import FAQ from "../components/Home/FAQ";
 import { InferGetStaticPropsType } from "next";
 import { getBio, getFAQs, getPages, getServices } from "@/sanity/queries";
-import Footer from "../components/Layout/Footer";
+import Layout from "@/components/Layout/Layout";
 
 export default function Home({
   bio,
@@ -20,10 +20,11 @@ export default function Home({
         path={"/faq"}
         image={"/home.png"}
       />
-      <section className="container-width space-y-12 py-12">
-        <FAQ questions={questions} page={pages[3]} />
-      </section>
-      <Footer bio={bio} services={services} />
+      <Layout bio={bio} services={services}>
+        <section className="container-width space-y-12 py-12">
+          <FAQ questions={questions} page={pages[3]} />
+        </section>
+      </Layout>
     </>
   );
 }

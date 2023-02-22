@@ -1,8 +1,8 @@
 import { InferGetStaticPropsType } from "next";
 import Contact from "../components/Home/Contact";
 import Meta from "../components/Meta";
-import Footer from "../components/Layout/Footer";
 import { getBio, getPages, getServices } from "@/sanity/queries";
+import Layout from "@/components/Layout/Layout";
 
 export default function Home({
   bio,
@@ -19,10 +19,11 @@ export default function Home({
         path={"/contact"}
         image={"/home.png"}
       />
-      <section className="container-width space-y-12 py-12">
-        <Contact bio={bio} page={pages[4]} />
-      </section>
-      <Footer bio={bio} services={services} />
+      <Layout bio={bio} services={services}>
+        <section className="container-width space-y-12 py-12">
+          <Contact bio={bio} page={pages[4]} />
+        </section>
+      </Layout>
     </>
   );
 }

@@ -40,7 +40,7 @@ export default function Component({
   }
 
   return (
-    <div className="space-y-8 bg-gray-50 dark:bg-slate-800 py-9 px-6 md:p-9 rounded">
+    <section className="space-y-8 bg-gray-50 dark:bg-slate-800 py-9 px-6 md:p-9 rounded">
       <article className="space-y-6">
         <header className="text-center space-y-2">
           <TypographyH1>
@@ -162,6 +162,6 @@ export default function Component({
           </div>
         </div>
       </article>
-    </div>
+    </section>
   );
 }

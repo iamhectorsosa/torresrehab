@@ -14,7 +14,7 @@ import {
   getReviews,
   getServices,
 } from "@/sanity/queries";
-import Footer from "../components/Layout/Footer";
+import Layout from "@/components/Layout/Layout";
 
 export default function Home({
   bio,
@@ -27,15 +27,16 @@ export default function Home({
   return (
     <>
       <Meta />
-      <section className="container-width space-y-12 py-12">
-        <Bio bio={bio} />
-        <Services services={services} page={pages[0]} />
-        <Incentives incentives={incentives} limit={3} page={pages[1]} />
-        <Reviews reviews={reviews} limit={5} page={pages[2]} />
-        <FAQ questions={questions} limit={2} page={pages[3]} />
-        <Contact bio={bio} page={pages[4]} />
-      </section>
-      <Footer bio={bio} services={services} />
+      <Layout bio={bio} services={services}>
+        <div className="container-width space-y-12 py-12">
+          <Bio bio={bio} />
+          <Services services={services} page={pages[0]} />
+          <Incentives incentives={incentives} limit={3} page={pages[1]} />
+          <Reviews reviews={reviews} limit={5} page={pages[2]} />
+          <FAQ questions={questions} limit={2} page={pages[3]} />
+          <Contact bio={bio} page={pages[4]} />
+        </div>
+      </Layout>
     </>
   );
 }

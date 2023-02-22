@@ -1,20 +1,23 @@
-import { ReactNode } from "react";
 import Navbar from "./Navbar";
 import ReviewModal from "../UI/ReviewModal";
+import Footer from "./Footer";
+import { Services } from "@/sanity/schemas/services";
+import { About } from "@/sanity/schemas/about";
 
 export default function Layout({
-  className,
+  bio,
+  services,
   children,
 }: {
-  className: string;
-  children: ReactNode;
+  bio: About;
+  services: Services[];
+  children: React.ReactNode;
 }) {
   return (
     <>
-      <main className={className}>
-        <Navbar />
-        {children}
-      </main>
+      <Navbar />
+      {children}
+      <Footer bio={bio} services={services} />
       <ReviewModal />
     </>
   );

@@ -1,9 +1,6 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import Layout from "../components/Layout/Layout";
 import { Inter, Zilla_Slab } from "@next/font/google";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
 import { trpc } from "../utils/trpc";
 
 const inter = Inter({
@@ -44,14 +41,10 @@ const zilla = Zilla_Slab({
 });
 
 function App({ Component, pageProps }: AppProps) {
-  const router = useRouter();
-  useEffect(() => {
-    document.querySelector(".drawer-content")?.scrollTo({ top: 0 });
-  }, [router.pathname]);
   return (
-    <Layout className={`${inter.variable} ${zilla.variable} font-sans`}>
+    <main className={`${inter.variable} ${zilla.variable} font-sans`}>
       <Component {...pageProps} />
-    </Layout>
+    </main>
   );
 }
 
