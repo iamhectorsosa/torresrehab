@@ -70,14 +70,14 @@ export default function Component({
               </div>
             </div>
           </div>
-          <div className="rounded-lg bg-white dark:bg-slate-700/60 p-8 shadow-lg md:col-span-3 md:p-12">
+          <div className="rounded-lg bg-white dark:bg-slate-900/60 p-8 shadow-lg md:col-span-3 md:p-12">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div>
                 <label className="sr-only" htmlFor="name">
                   Name
                 </label>
                 <input
-                  className="w-full rounded-lg border-gray-200 dark:border-slate-600 dark:bg-slate-700 p-3 text-sm"
+                  className="w-full rounded-lg border-gray-200 dark:border-slate-600 dark:bg-transparent p-3 text-sm"
                   placeholder="Name"
                   type="text"
                   id="name"
@@ -93,7 +93,7 @@ export default function Component({
                     Email
                   </label>
                   <input
-                    className="w-full rounded-lg border-gray-200 dark:border-slate-600 dark:bg-slate-700 p-3 text-sm"
+                    className="w-full rounded-lg border-gray-200 dark:border-slate-600 dark:bg-transparent p-3 text-sm"
                     placeholder="Email address"
                     type="email"
                     id="email"
@@ -108,7 +108,7 @@ export default function Component({
                     Phone
                   </label>
                   <input
-                    className="w-full rounded-lg border-gray-200 dark:border-slate-600 dark:bg-slate-700 p-3 text-sm"
+                    className="w-full rounded-lg border-gray-200 dark:border-slate-600 dark:bg-transparent p-3 text-sm"
                     placeholder="Phone Number"
                     type="tel"
                     id="phone"
@@ -124,7 +124,7 @@ export default function Component({
                   Message
                 </label>
                 <textarea
-                  className="w-full rounded-lg border-gray-200 dark:border-slate-600 dark:bg-slate-700 p-3 text-sm"
+                  className="w-full rounded-lg border-gray-200 dark:border-slate-600 dark:bg-transparent p-3 text-sm"
                   placeholder="Message"
                   rows={6}
                   id="message"
@@ -133,7 +133,7 @@ export default function Component({
                   })}
                 ></textarea>
               </div>
-              <Button variant="subtle" type="submit" size="lg">
+              <Button type="submit" size="lg">
                 {mutation.isLoading && (
                   <svg
                     className="animate-spin -ml-1 mr-3 h-4 w-4 text-invert"

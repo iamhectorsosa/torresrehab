@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { navItems } from "../../lib/config";
-import { nanoid } from "nanoid";
 import { Button } from "../UI/button";
 import { TypographyH1 } from "../UI/typography";
 import { useState } from "react";
@@ -18,9 +17,12 @@ export default function Navbar({}: {}) {
           <Link href="/">
             <TypographyH1>Torres Rehab</TypographyH1>
           </Link>
-          <nav aria-label="Site Nav" className="hidden md:flex items-center">
-            {navItems.map(({ href, label }) => (
-              <Link tabIndex={-1} href={href} key={nanoid()}>
+          <nav
+            aria-label="Site Nav"
+            className="hidden md:flex items-center gap-2"
+          >
+            {navItems.map(({ href, label }, index) => (
+              <Link tabIndex={-1} href={href} key={index}>
                 <Button variant="ghost">{label}</Button>
               </Link>
             ))}
@@ -61,8 +63,8 @@ export default function Navbar({}: {}) {
       {isOpen && (
         <div className="bg-white dark:bg-slate-900 h-full">
           <nav aria-label="Site Nav" className="flex flex-col p-4 gap-4">
-            {navItems.map(({ href, label }) => (
-              <Link tabIndex={-1} href={href} key={nanoid()}>
+            {navItems.map(({ href, label }, index) => (
+              <Link tabIndex={-1} href={href} key={index}>
                 <Button
                   className="w-full text-3xl font-zilla py-8 px-6"
                   size="lg"

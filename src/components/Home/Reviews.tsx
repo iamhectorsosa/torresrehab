@@ -1,6 +1,5 @@
 import { Pages } from "@/sanity/schemas/pages";
 import { Reviews } from "@/sanity/schemas/reviews";
-import dayjs from "dayjs";
 import Link from "next/link";
 import { Button } from "../UI/button";
 import {

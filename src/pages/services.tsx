@@ -15,6 +15,7 @@ import {
 } from "@/components/UI/typography";
 import { Button } from "@/components/UI/button";
 import Layout from "@/components/Layout/Layout";
+import AppointmentModal from "@/components/Modals/AppointmentModal";
 
 const components: Partial<PortableTextReactComponents> = {
   block: {
@@ -87,14 +88,20 @@ export default function Home({
                         className="min-h-80 md:h-96 w-full object-cover rounded"
                       />
                       <div>
-                        <a
-                          tabIndex={-1}
-                          target="_blank"
-                          rel="noreferrer"
-                          href={i.href}
-                        >
-                          <Button variant="subtle">Book an appointment</Button>
-                        </a>
+                        {i.name === "Osteopathy" ? (
+                          <a
+                            tabIndex={-1}
+                            target="_blank"
+                            rel="noreferrer"
+                            href={i.href}
+                          >
+                            <Button variant="subtle">
+                              Book an appointment
+                            </Button>
+                          </a>
+                        ) : (
+                          <AppointmentModal />
+                        )}
                       </div>
                     </div>
                     <div className="py-2 md:max-h-[27.5rem] md:overflow-scroll">

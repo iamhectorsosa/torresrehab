@@ -10,7 +10,6 @@ import {
 } from "react-icons/ai";
 import { Social } from "../../lib/types";
 import { ReactNode } from "react";
-import { nanoid } from "nanoid";
 import Link from "next/link";
 import { About } from "@/sanity/schemas/about";
 import { Services } from "@/sanity/schemas/services";
@@ -117,8 +116,8 @@ export default function Footer({
 
               <nav aria-label="Footer Navigation - Services" className="mt-6">
                 <ul className="space-y-4 text-sm">
-                  {services.map(({ name }) => (
-                    <li key={nanoid()}>
+                  {services.map(({ name }, index) => (
+                    <li key={index}>
                       <Link
                         className=" transition hover:opacity-75"
                         href={`/services`}
@@ -138,8 +137,8 @@ export default function Footer({
                 <ul className="space-y-4 text-sm">
                   {navItems
                     .filter(({ label }) => label !== "Services")
-                    .map(({ href, label }) => (
-                      <li key={nanoid()}>
+                    .map(({ href, label }, index) => (
+                      <li key={index}>
                         <Link
                           className=" transition hover:opacity-75"
                           href={href}
