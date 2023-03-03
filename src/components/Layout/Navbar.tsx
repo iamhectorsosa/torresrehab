@@ -1,21 +1,22 @@
 import Link from "next/link";
 import { navItems } from "../../lib/config";
 import { Button } from "../UI/button";
-import { TypographyH1 } from "../UI/typography";
+import { ProseH1, ProseH2 } from "../UI/typography";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Navbar({}: {}) {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <nav
-      className={`sticky top-0 bg-white dark:bg-slate-900 z-10 shadow-sm ${
-        isOpen ? "h-screen" : ""
-      }`}
+    <motion.nav
+      initial={false}
+      animate={isOpen ? "open" : "closed"}
+      className={`sticky top-0 bg-white dark:bg-slate-900 z-10 shadow-sm h-fit`}
     >
       <div className="navigation-width">
         <div className="flex items-center justify-between">
           <Link href="/">
-            <TypographyH1>Torres Rehab</TypographyH1>
+            <ProseH1 className="lg:text-4xl text-2xl">Torres Rehab</ProseH1>
           </Link>
           <nav
             aria-label="Site Nav"
@@ -38,43 +39,109 @@ export default function Navbar({}: {}) {
               <Button className="hidden md:inline-flex">Book Now</Button>
             </a>
             <Button
-              className="h-10 w-10 p-0 inline-flex md:hidden"
+              className="flex flex-col gap-2 w-10 h-10 p-2 md:hidden"
               variant="ghost"
               onClick={() => setIsOpen(!isOpen)}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
+              <span
+                className={`bg-slate-700 w-full h-0.5 transition-all ease-out ${
+                  isOpen
+                    ? "rotate-45 translate-y-[5px] translate-x-[0.5px]"
+                    : ""
+                }`}
+              />
+              <span
+                className={`bg-slate-700 w-full h-0.5 transition-all ease-out ${
+                  isOpen
+                    ? "-rotate-45 -translate-y-[5px] translate-x-[0.5px]"
+                    : ""
+                }`}
+              />
             </Button>
           </div>
         </div>
       </div>
-      {isOpen && (
-        <div className="bg-white dark:bg-slate-900 h-full">
-          <nav aria-label="Site Nav" className="flex flex-col p-4 gap-4">
-            {navItems.map(({ href, label }, index) => (
-              <Link tabIndex={-1} href={href} key={index}>
+      <motion.div
+        variants={{
+          open: {
+            height: "100vh",
+            transition: {
+              staggerChildren: 0.07,
+              delayChildren: 0.2,
+            },
+          },
+          closed: {
+            height: "0",
+            transition: {
+              staggerChildren: 0.05,
+              staggerDirection: -1,
+            },
+          },
+        }}
+        className="bg-white dark:bg-slate-900"
+      >
+        <motion.ul
+          variants={{
+            open: {
+              transition: { staggerChildren: 0.07, delayChildren: 0.2 },
+            },
+            closed: {
+              transition: { staggerChildren: 0.05, staggerDirection: -1 },
+            },
+          }}
+          aria-label="Site Nav"
+          className="flex flex-col p-4 gap-4"
+        >
+          {navItems.map(({ href, label }, index) => (
+            <motion.li
+              key={index}
+              variants={{
+                open: {
+                  y: 0,
+                  opacity: 1,
+                  transition: {
+                    y: { stiffness: 1000, velocity: -100 },
+                  },
+                },
+                closed: {
+                  y: 50,
+                  opacity: 0,
+                  transition: {
+                    y: { stiffness: 1000 },
+                  },
+                },
+              }}
+            >
+              <Link tabIndex={-1} href={href}>
                 <Button
                   className="w-full text-3xl font-zilla py-8 px-6"
                   size="lg"
                   variant="ghost"
                   onClick={() => setIsOpen(!isOpen)}
                 >
-                  {label}
+                  <ProseH2>{label}</ProseH2>
                 </Button>
               </Link>
-            ))}
+            </motion.li>
+          ))}
+          <motion.li
+            variants={{
+              open: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  y: { stiffness: 1000, velocity: -100 },
+                },
+              },
+              closed: {
+                y: 50,
+                opacity: 0,
+                transition: {
+                  y: { stiffness: 1000 },
+                },
+              },
+            }}
+          >
             <a
               tabIndex={-1}
               target="_blank"
@@ -85,12 +152,12 @@ export default function Navbar({}: {}) {
                 className="w-full text-3xl font-zilla py-8 px-6"
                 onClick={() => setIsOpen(!isOpen)}
               >
-                Book Now
+                <ProseH2>Book Now</ProseH2>
               </Button>
             </a>
-          </nav>
-        </div>
-      )}
-    </nav>
+          </motion.li>
+        </motion.ul>
+      </motion.div>
+    </motion.nav>
   );
 }

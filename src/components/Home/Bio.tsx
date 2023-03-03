@@ -43,7 +43,7 @@ export default function Component({ bio }: { bio: About }) {
           <h3 className="font-zilla text-2xl font-semibold tracking-tight">
             {bio.name}
           </h3>
-          <h1 className="font-zilla text-4xl font-extrabold tracking-tight lg:text-5xl">
+          <h1 className="font-zilla text-4xl font-bold tracking-tight lg:text-5xl">
             {bio.title}
           </h1>
           <div className="py-2">

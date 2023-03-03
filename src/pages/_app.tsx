@@ -1,11 +1,10 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { Inter, Zilla_Slab } from "next/font/google";
+import { Inter, Archivo } from "next/font/google";
 import { trpc } from "../utils/trpc";
 
-const inter = Inter({
+const archivo = Archivo({
   subsets: ["latin"],
-  variable: "--font-inter",
   fallback: [
     "-apple-system",
     "BlinkMacSystemFont",
@@ -21,10 +20,8 @@ const inter = Inter({
   ],
 });
 
-const zilla = Zilla_Slab({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-zilla",
   fallback: [
     "-apple-system",
     "BlinkMacSystemFont",
@@ -42,17 +39,15 @@ const zilla = Zilla_Slab({
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    // <main className={`${inter.variable} ${zilla.variable} font-sans`}>
     <>
       <style jsx global>{`
         :root {
-          --font-zilla: ${zilla.style.fontFamily};
+          --font-archivo: ${archivo.style.fontFamily};
           --font-inter: ${inter.style.fontFamily};
         }
       `}</style>
       <Component {...pageProps} />
     </>
-    // </main>
   );
 }
 
