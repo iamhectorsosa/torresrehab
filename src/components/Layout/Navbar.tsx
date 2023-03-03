@@ -64,7 +64,7 @@ export default function Navbar({}: {}) {
       <motion.div
         variants={{
           open: {
-            height: "100vh",
+            height: "100%",
             transition: {
               staggerChildren: 0.07,
               delayChildren: 0.2,
@@ -78,7 +78,7 @@ export default function Navbar({}: {}) {
             },
           },
         }}
-        className="bg-white dark:bg-slate-900"
+        className=" overflow-hidden"
       >
         <motion.ul
           variants={{

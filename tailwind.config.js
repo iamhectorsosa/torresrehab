@@ -6,8 +6,8 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      sans: ["var(--font-inter)"],
       headings: ["var(--font-archivo)"],
+      sans: ["var(--font-inter)"],
     },
   },
   plugins: [

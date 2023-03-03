@@ -3,12 +3,7 @@ import { type Services } from "@/sanity/schemas/services";
 import Link from "next/link";
 
 import { Button } from "../UI/button";
-import {
-  TypographyH1,
-  TypographyH2,
-  TypographyLead,
-  TypographySubtle,
-} from "../UI/typography";
+import { ProseH1, ProseH2, ProseLead, ProseSubtle } from "../UI/typography";
 export default function Component({
   services,
   page,
@@ -20,8 +15,8 @@ export default function Component({
     <section className="space-y-8">
       <article className="space-y-6">
         <header className="md:text-center space-y-2">
-          <TypographyH1>{page.headline}</TypographyH1>
-          <TypographyLead>{page.tagline}</TypographyLead>
+          <ProseH1>{page.headline}</ProseH1>
+          <ProseLead>{page.tagline}</ProseLead>
         </header>
         <div className="grid sm:grid-cols-2 gap-4">
           {services.map((i, index) => (
@@ -37,8 +32,8 @@ export default function Component({
                 className="max-h-60 w-full object-cover"
               />
               <div className="space-y-3 p-4">
-                <TypographyH2>{i.name}</TypographyH2>
-                <TypographySubtle>{i.tagline}</TypographySubtle>
+                <ProseH2>{i.name}</ProseH2>
+                <ProseSubtle>{i.tagline}</ProseSubtle>
               </div>
             </Link>
           ))}

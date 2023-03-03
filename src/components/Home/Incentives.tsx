@@ -3,7 +3,7 @@ import { Pages } from "@/sanity/schemas/pages";
 import { CheckIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { Button } from "../UI/button";
-import { TypographyH1, TypographyLead, TypographyP } from "../UI/typography";
+import { ProseH1, ProseLead, ProseP } from "../UI/typography";
 
 export default function Component({
   incentives,
@@ -18,8 +18,8 @@ export default function Component({
     <section className="space-y-8">
       <article className="space-y-6">
         <header className="md:text-center space-y-2">
-          <TypographyH1 id="benefits">{page.headline}</TypographyH1>
-          <TypographyLead>{page.tagline}</TypographyLead>
+          <ProseH1 id="benefits">{page.headline}</ProseH1>
+          <ProseLead>{page.tagline}</ProseLead>
         </header>
         <dl className="grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8">
           {incentives.slice(0, limit ?? undefined).map((i, index) => (
@@ -32,7 +32,7 @@ export default function Component({
                 <span>{i.headline}</span>
               </dt>
               <dd className="ml-10">
-                <TypographyP>{i.description}</TypographyP>
+                <ProseP>{i.description}</ProseP>
               </dd>
             </div>
           ))}
@@ -47,9 +47,9 @@ export default function Component({
           </Link>
         ) : (
           <>
-            <TypographyLead>
+            <ProseLead>
               More questions? Send us a message using the button below
-            </TypographyLead>
+            </ProseLead>
             <Link tabIndex={-1} href="/contact">
               <Button variant="subtle" size="lg">
                 Send a message

@@ -2,12 +2,7 @@ import { Pages } from "@/sanity/schemas/pages";
 import { Reviews } from "@/sanity/schemas/reviews";
 import Link from "next/link";
 import { Button } from "../UI/button";
-import {
-  TypographyH1,
-  TypographyLead,
-  TypographyP,
-  TypographySubtle,
-} from "../UI/typography";
+import { ProseH1, ProseLead, ProseP, ProseSubtle } from "../UI/typography";
 
 export default function Component({
   reviews,
@@ -25,8 +20,8 @@ export default function Component({
       }`}
     >
       <header className="md:text-center space-y-2">
-        <TypographyH1>{page.headline}</TypographyH1>
-        <TypographyLead>{page.tagline}</TypographyLead>
+        <ProseH1>{page.headline}</ProseH1>
+        <ProseLead>{page.tagline}</ProseLead>
       </header>
       {limit ? (
         <div className="lg:col-span-2 lg:mx-0">
@@ -39,11 +34,11 @@ export default function Component({
                       {i.title}
                     </h3>
                     <div className="line-clamp-6">
-                      <TypographyP>{i.message}</TypographyP>
+                      <ProseP>{i.message}</ProseP>
                     </div>
-                    <TypographySubtle>
+                    <ProseSubtle>
                       - <span className="uppercase">{i.name}</span>
-                    </TypographySubtle>
+                    </ProseSubtle>
                   </div>
                 </blockquote>
               </div>
@@ -59,10 +54,10 @@ export default function Component({
                   <h3 className="text-xl font-bold text-pink-500 dark:text-white sm:text-2xl">
                     {i.title}
                   </h3>
-                  <TypographyP>{i.message}</TypographyP>
-                  <TypographySubtle>
+                  <ProseP>{i.message}</ProseP>
+                  <ProseSubtle>
                     - <span className="uppercase">{i.name}</span>
-                  </TypographySubtle>
+                  </ProseSubtle>
                 </div>
               </blockquote>
             </div>
@@ -78,9 +73,9 @@ export default function Component({
           </Link>
         ) : (
           <>
-            <TypographyLead>
+            <ProseLead>
               More questions? Send us a message using the button below
-            </TypographyLead>
+            </ProseLead>
             <Link tabIndex={-1} href="/contact">
               <Button variant="subtle" size="lg">
                 Send a message

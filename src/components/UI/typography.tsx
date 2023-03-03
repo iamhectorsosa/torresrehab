@@ -1,88 +1,6 @@
 import { ComponentPropsWithoutRef, forwardRef } from "react";
 import { cn } from "@/lib/utils";
-
-export function TypographyH1({
-  children,
-  id,
-}: {
-  children: React.ReactNode;
-  id?: string;
-}) {
-  return (
-    <h1
-      id={id}
-      className="font-zilla scroll-m-36 md:scroll-m-40 text-4xl font-bold tracking-tight lg:text-5xl"
-    >
-      {children}
-    </h1>
-  );
-}
-
-export function TypographyH2({ children }: { children: React.ReactNode }) {
-  return (
-    <h2 className="font-zilla mt-10 scroll-m-20 text-3xl font-bold tracking-tight transition-colors first:mt-0 dark:border-b-slate-700">
-      {children}
-    </h2>
-  );
-}
-
-export function TypographyH3({ children }: { children: React.ReactNode }) {
-  return (
-    <h3 className="font-zilla scroll-m-20 text-2xl font-medium tracking-tight">
-      {children}
-    </h3>
-  );
-}
-
-export function TypographyH4({ children }: { children: React.ReactNode }) {
-  return (
-    <h4 className="font-zilla scroll-m-20 text-xl font-semibold tracking-tight">
-      {children}
-    </h4>
-  );
-}
-
-export function TypographyP({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="leading-7 font-light [&:not(:first-child)]:mt-6">
-      {children}
-    </p>
-  );
-}
-
-export function TypographyList({ children }: { children: React.ReactNode }) {
-  return (
-    <ul className="my-6 ml-6 list-disc space-y-2 font-light">{children}</ul>
-  );
-}
-
-export function TypographyLead({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="text-xl text-slate-700 dark:text-slate-400 font-light">
-      {children}
-    </p>
-  );
-}
-
-export function TypographyLarge({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="text-lg font-semibold text-slate-900 dark:text-slate-50">
-      {children}
-    </div>
-  );
-}
-
-export function TypographySmall({ children }: { children: React.ReactNode }) {
-  return <small className="text-sm leading-relaxed block">{children}</small>;
-}
-
-export function TypographySubtle({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="text-slate-500 dark:text-slate-400 font-light text-sm">
-      {children}
-    </p>
-  );
-}
+import { PortableTextReactComponents } from "@portabletext/react";
 
 const HeadingAnchor = (props: React.ComponentPropsWithoutRef<"a">) => {
   const { children, ...otherProps } = props;
@@ -103,7 +21,7 @@ const ProseH1 = forwardRef<HTMLHeadingElement, ComponentPropsWithoutRef<"h1">>(
       <h1
         id={id}
         className={cn(
-          "font-headings scroll-m-20 text-4xl font-bold tracking-tight lg:text-5xl",
+          "font-headings scroll-m-32 text-4xl font-bold tracking-tight lg:text-5xl",
           className
         )}
         ref={ref}
@@ -128,7 +46,7 @@ const ProseH2 = forwardRef<HTMLHeadingElement, ComponentPropsWithoutRef<"h2">>(
       <h2
         id={id}
         className={cn(
-          "font-headings scroll-m-20 text-3xl font-bold tracking-tight lg:text-4xl",
+          "font-headings scroll-m-32 text-3xl font-bold tracking-tight lg:text-4xl",
           cn
         )}
         ref={ref}
@@ -153,7 +71,7 @@ const ProseH3 = forwardRef<HTMLHeadingElement, ComponentPropsWithoutRef<"h3">>(
       <h3
         id={id}
         className={cn(
-          "font-headings scroll-m-20 text-2xl font-bold tracking-tight lg:text-3xl",
+          "font-headings scroll-m-32 text-2xl font-bold tracking-tight lg:text-3xl",
           className
         )}
         ref={ref}
@@ -178,7 +96,7 @@ const ProseH4 = forwardRef<HTMLHeadingElement, ComponentPropsWithoutRef<"h4">>(
       <h4
         id={id}
         className={cn(
-          "font-headings scroll-m-20 text-xl font-semibold tracking-tight lg:text-2xl",
+          "font-headings scroll-m-32 text-xl font-semibold tracking-tight lg:text-2xl",
           className
         )}
         ref={ref}
@@ -267,6 +185,23 @@ const ProseStrong = forwardRef<HTMLElement, ComponentPropsWithoutRef<"strong">>(
 );
 
 ProseStrong.displayName = "ProseStrong";
+
+const ProseSmall = forwardRef<HTMLElement, ComponentPropsWithoutRef<"small">>(
+  (props, ref) => {
+    const { children, ...otherProps } = props;
+    return (
+      <small
+        className="text-sm leading-relaxed block"
+        ref={ref}
+        {...otherProps}
+      >
+        {children}
+      </small>
+    );
+  }
+);
+
+ProseSmall.displayName = "ProseSmall";
 
 const ProseAnchor = forwardRef<
   HTMLAnchorElement,
@@ -358,6 +293,24 @@ const ProseInlineCode = forwardRef<
 
 ProseInlineCode.displayName = "ProseInlineCode";
 
+const portableTextComponents: Partial<PortableTextReactComponents> = {
+  block: {
+    h1: (props) => <ProseH1>{props.children}</ProseH1>,
+    h2: (props) => <ProseH2>{props.children}</ProseH2>,
+    h3: (props) => <ProseH3>{props.children}</ProseH3>,
+    h4: (props) => <ProseH4>{props.children}</ProseH4>,
+    normal: (props) => <ProseP>{props.children}</ProseP>,
+  },
+  list: {
+    bullet: (props) => <ProseUL>{props.children}</ProseUL>,
+  },
+  marks: {
+    strong: ({ children }: { children: React.ReactNode }) => (
+      <ProseStrong>{children}</ProseStrong>
+    ),
+  },
+};
+
 export {
   ProseH1,
   ProseH2,
@@ -367,8 +320,10 @@ export {
   ProseSubtle,
   ProseP,
   ProseStrong,
+  ProseSmall,
   ProseAnchor,
   ProseBlockquote,
   ProseUL,
   ProseInlineCode,
+  portableTextComponents,
 };
