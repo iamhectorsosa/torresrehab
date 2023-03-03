@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { Inter, Zilla_Slab } from "@next/font/google";
+import { Inter, Zilla_Slab } from "next/font/google";
 import { trpc } from "../utils/trpc";
 
 const inter = Inter({
@@ -42,9 +42,17 @@ const zilla = Zilla_Slab({
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={`${inter.variable} ${zilla.variable} font-sans`}>
+    // <main className={`${inter.variable} ${zilla.variable} font-sans`}>
+    <>
+      <style jsx global>{`
+        :root {
+          --font-zilla: ${zilla.style.fontFamily};
+          --font-inter: ${inter.style.fontFamily};
+        }
+      `}</style>
       <Component {...pageProps} />
-    </main>
+    </>
+    // </main>
   );
 }
 
