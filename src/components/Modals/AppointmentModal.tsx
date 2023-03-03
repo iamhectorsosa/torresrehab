@@ -7,7 +7,7 @@ import {
 import { Button } from "../UI/button";
 import { Input } from "../UI/input";
 import { Label } from "../UI/label";
-import { TypographyH2, TypographyP } from "../UI/typography";
+import { ProseH2, ProseP } from "../UI/typography";
 
 import { Controller, useForm } from "react-hook-form";
 import { trpc as t } from "../../utils/trpc";
@@ -51,16 +51,16 @@ export default function AppointmentModal() {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <TypographyH2>
+          <ProseH2>
             {mutation.isSuccess
               ? "Thank you for your message"
               : " These appointments are scheduled only at request"}
-          </TypographyH2>
-          <TypographyP>
+          </ProseH2>
+          <ProseP>
             {mutation.isSuccess
               ? "We will get back to you soon!"
               : "Just send us your info and we'll get back to you soon!"}
-          </TypographyP>
+          </ProseP>
         </DialogHeader>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid gap-4 py-4">

@@ -13,7 +13,7 @@ import { ReactNode } from "react";
 import Link from "next/link";
 import { About } from "@/sanity/schemas/about";
 import { Services } from "@/sanity/schemas/services";
-import { TypographyLarge, TypographySmall } from "../UI/typography";
+import { ProseStrong, ProseSmall } from "../UI/typography";
 
 function getIcon(social: Social["type"]): ReactNode {
   switch (social) {
@@ -54,23 +54,21 @@ export default function Footer({
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
           <div>
             <div>
-              <TypographySmall>
+              <ProseSmall>
                 <span className="uppercase">Get in touch</span>
-              </TypographySmall>
-              <TypographyLarge>
+              </ProseSmall>
+              <ProseStrong>
                 <a
                   href={`tel:${bio.phoneNumber}`}
                   className="block hover:opacity-75 w-fit"
                 >
                   {bio.phoneNumber}
                 </a>
-              </TypographyLarge>
+              </ProseStrong>
             </div>
             <div className="mt-4 space-y-1">
-              <TypographySmall>
-                Monday to Friday: {bio.weekdaySchedule}
-              </TypographySmall>
-              <TypographySmall>Weekends: {bio.weekendSchedule}</TypographySmall>
+              <ProseSmall>Monday to Friday: {bio.weekdaySchedule}</ProseSmall>
+              <ProseSmall>Weekends: {bio.weekendSchedule}</ProseSmall>
             </div>
 
             <ul className="flex gap-6 mt-8">

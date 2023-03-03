@@ -2,38 +2,16 @@ import { InferGetStaticPropsType } from "next";
 import Incentives from "../components/Home/Incentives";
 import Meta from "../components/Meta";
 import { getBio, getIncentives, getPages, getServices } from "@/sanity/queries";
-import { PortableText, PortableTextReactComponents } from "@portabletext/react";
-import {
-  TypographyH1,
-  TypographyH2,
-  TypographyH3,
-  TypographyH4,
-  TypographyLead,
-  TypographyList,
-  TypographyP,
-  TypographySmall,
-} from "@/components/UI/typography";
+import { PortableText } from "@portabletext/react";
 import { Button } from "@/components/UI/button";
 import Layout from "@/components/Layout/Layout";
 import AppointmentModal from "@/components/Modals/AppointmentModal";
-
-const components: Partial<PortableTextReactComponents> = {
-  block: {
-    h1: ({ children }) => <TypographyH1>{children}</TypographyH1>,
-    h2: ({ children }) => <TypographyH2>{children}</TypographyH2>,
-    h3: ({ children }) => <TypographyH3>{children}</TypographyH3>,
-    h4: ({ children }) => <TypographyH4>{children}</TypographyH4>,
-    normal: ({ children }) => <TypographyP>{children}</TypographyP>,
-  },
-  list: {
-    bullet: ({ children }) => <TypographyList>{children}</TypographyList>,
-  },
-  marks: {
-    strong: ({ children }) => (
-      <strong className="font-semibold">{children}</strong>
-    ),
-  },
-};
+import {
+  portableTextComponents,
+  ProseH1,
+  ProseLead,
+  ProseSmall,
+} from "@/components/UI/typography";
 
 export default function Home({
   bio,
@@ -55,25 +33,23 @@ export default function Home({
         <section className="container-width space-y-12 py-12">
           <div className="space-y-6">
             <header className="md:text-center space-y-2">
-              <TypographyH1> {pages[0].headline}</TypographyH1>
-              <TypographyLead> {pages[0].tagline}</TypographyLead>
+              <ProseH1>{pages[0].headline}</ProseH1>
+              <ProseLead>{pages[0].tagline}</ProseLead>
             </header>
             <div>
               {services.map((i, index) => (
                 <div key={index} className="space-y-4 md:space-y-6 py-4">
                   <header className="flex flex-col justify-center sm:items-center gap-2">
-                    <TypographyH1
-                      id={i.name.toLowerCase().replaceAll(" ", "-")}
-                    >
+                    <ProseH1 id={i.name.toLowerCase().replaceAll(" ", "-")}>
                       {i.name}
-                    </TypographyH1>
-                    <TypographySmall>
+                    </ProseH1>
+                    <ProseSmall>
                       <div className="flex sm:gap-2 flex-col sm:flex-row text-gray-500">
                         <span>Location: {i.location}</span>
                         <span className="hidden sm:inline">·</span>
                         <span>Time: {i.time}</span>
                       </div>
-                    </TypographySmall>
+                    </ProseSmall>
                   </header>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div
@@ -107,7 +83,7 @@ export default function Home({
                     <div className="py-2 md:max-h-[27.5rem] md:overflow-scroll">
                       <PortableText
                         value={i.description}
-                        components={components}
+                        components={portableTextComponents}
                       />
                     </div>
                   </div>

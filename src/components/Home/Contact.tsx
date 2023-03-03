@@ -4,11 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { About } from "@/sanity/schemas/about";
 import { Pages } from "@/sanity/schemas/pages";
-import {
-  TypographyH1,
-  TypographyLead,
-  TypographySmall,
-} from "../UI/typography";
+import { ProseH1, ProseLead, ProseSmall } from "../UI/typography";
 import { Button } from "../UI/button";
 
 export const contactSchema = z.object({
@@ -43,15 +39,14 @@ export default function Component({
     <section className="space-y-8 bg-gray-50 dark:bg-slate-800 py-9 px-6 md:p-9 rounded">
       <article className="space-y-6">
         <header className="text-center space-y-2">
-          <TypographyH1>
-            {" "}
+          <ProseH1>
             {mutation.isSuccess ? "Thank you for your message" : page.headline}
-          </TypographyH1>
+          </ProseH1>
         </header>
         <div className="grid grid-cols-1 gap-x-16 gap-y-8 md:grid-cols-5 max-w-md md:max-w-none mx-auto">
           <div className="md:col-span-2 md:py-12 space-y-6">
             <div className="space-y-4 text-center md:text-left">
-              <TypographyLead>{page.tagline}</TypographyLead>
+              <ProseLead>{page.tagline}</ProseLead>
               <p>
                 <a
                   href={`tel:${bio.phoneNumber.replaceAll(" ", "")}`}
@@ -61,12 +56,8 @@ export default function Component({
                 </a>
               </p>
               <div className="space-y-1">
-                <TypographySmall>
-                  Monday to Friday: {bio.weekdaySchedule}
-                </TypographySmall>
-                <TypographySmall>
-                  Weekends: {bio.weekendSchedule}
-                </TypographySmall>
+                <ProseSmall>Monday to Friday: {bio.weekdaySchedule}</ProseSmall>
+                <ProseSmall>Weekends: {bio.weekendSchedule}</ProseSmall>
               </div>
             </div>
           </div>
