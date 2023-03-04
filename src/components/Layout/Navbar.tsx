@@ -5,6 +5,44 @@ import { ProseH1, ProseH2 } from "../UI/typography";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/UI/navigation-menu";
+import React from "react";
+import { cn } from "@/lib/utils";
+
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-100 focus:bg-slate-100 dark:hover:bg-slate-700 dark:focus:bg-slate-700",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="text-sm leading-snug text-slate-500 line-clamp-2 dark:text-slate-400">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  );
+});
+ListItem.displayName = "ListItem";
+
 export default function Navbar({}: {}) {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -20,13 +58,54 @@ export default function Navbar({}: {}) {
           </Link>
           <nav
             aria-label="Site Nav"
-            className="hidden md:flex items-center gap-2"
+            className="hidden lg:flex items-center gap-2"
           >
-            {navItems.map(({ href, label }, index) => (
-              <Link tabIndex={-1} href={href} key={index}>
-                <Button variant="ghost">{label}</Button>
-              </Link>
-            ))}
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <Link href="/about" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={navigationMenuTriggerStyle()}
+                    >
+                      About me
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger>Services</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid gap-3 p-6 w-[500px]">
+                      <ListItem href="/docs" title="Osteopathy">
+                        Diagnosis and treatment for a wide range of medical
+                        conditions
+                      </ListItem>
+                      <ListItem
+                        href="/docs"
+                        title="1-1 Clinical Pilates Premium"
+                      >
+                        Based on Dynamic Neuromuscular Stabilization (DNS)
+                      </ListItem>
+                      <ListItem href="/docs" title="Personal Training">
+                        1-1 sessions focused on mobility training and strength
+                      </ListItem>
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+                {navItems
+                  .filter((i) => i.href !== "/services")
+                  .map(({ href, label }, index) => (
+                    <NavigationMenuItem key={index}>
+                      <Link href={href} legacyBehavior passHref>
+                        <NavigationMenuLink
+                          className={navigationMenuTriggerStyle()}
+                        >
+                          {label}
+                        </NavigationMenuLink>
+                      </Link>
+                    </NavigationMenuItem>
+                  ))}
+              </NavigationMenuList>
+            </NavigationMenu>
           </nav>
 
           <div className="flex items-center gap-2">
@@ -36,10 +115,10 @@ export default function Navbar({}: {}) {
               rel="noreferrer"
               href="https://hectorsosa.me"
             >
-              <Button className="hidden md:inline-flex">Book Now</Button>
+              <Button className="hidden lg:inline-flex">Book Now</Button>
             </a>
             <Button
-              className="flex flex-col gap-2 w-10 h-10 p-2 md:hidden"
+              className="flex flex-col gap-2 w-10 h-10 p-2 lg:hidden"
               variant="ghost"
               onClick={() => setIsOpen(!isOpen)}
             >
@@ -83,7 +162,7 @@ export default function Navbar({}: {}) {
         <motion.ul
           variants={{
             open: {
-              transition: { staggerChildren: 0.07, delayChildren: 0.2 },
+              transition: { staggerChildren: 0.05, delayChildren: 0.01 },
             },
             closed: {
               transition: { staggerChildren: 0.05, staggerDirection: -1 },
