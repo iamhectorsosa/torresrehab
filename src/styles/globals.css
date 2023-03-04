@@ -26,6 +26,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-main {
+body {
   @apply bg-white dark:bg-slate-900 dark:text-white;
 }
