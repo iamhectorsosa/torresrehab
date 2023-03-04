@@ -75,17 +75,17 @@ export default function Navbar({}: {}) {
                   <NavigationMenuTrigger>Services</NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid gap-3 p-6 w-[500px]">
-                      <ListItem href="/docs" title="Osteopathy">
+                      <ListItem href="/services" title="Osteopathy">
                         Diagnosis and treatment for a wide range of medical
                         conditions
                       </ListItem>
                       <ListItem
-                        href="/docs"
+                        href="/services"
                         title="1-1 Clinical Pilates Premium"
                       >
                         Based on Dynamic Neuromuscular Stabilization (DNS)
                       </ListItem>
-                      <ListItem href="/docs" title="Personal Training">
+                      <ListItem href="/services" title="Personal Training">
                         1-1 sessions focused on mobility training and strength
                       </ListItem>
                     </ul>
@@ -171,6 +171,35 @@ export default function Navbar({}: {}) {
           aria-label="Site Nav"
           className="flex flex-col p-4 gap-4"
         >
+          <motion.li
+            variants={{
+              open: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  y: { stiffness: 1000, velocity: -100 },
+                },
+              },
+              closed: {
+                y: 50,
+                opacity: 0,
+                transition: {
+                  y: { stiffness: 1000 },
+                },
+              },
+            }}
+          >
+            <Link tabIndex={-1} href="about">
+              <Button
+                className="w-full text-3xl font-zilla py-8 px-6"
+                size="lg"
+                variant="ghost"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <ProseH2>About Me</ProseH2>
+              </Button>
+            </Link>
+          </motion.li>
           {navItems.map(({ href, label }, index) => (
             <motion.li
               key={index}

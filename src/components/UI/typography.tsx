@@ -246,7 +246,7 @@ const ProseBlockquote = forwardRef<
     <div className="relative my-4 py-6 px-9 lg:px-16">
       <QuoteIcon className="absolute top-8 left-1 opacity-10 lg:left-6" />
       <blockquote
-        className="text-xl font-light leading-10 lg:text-2xl lg:leading-loose [&>p]:text-xl [&>p]:leading-loose lg:[&>p]:text-2xl lg:[&>p]:leading-10"
+        className="text-xl font-semibold leading-9 lg:text-2xl lg:leading-loose [&>p]:text-xl [&>p]:leading-loose lg:[&>p]:text-2xl lg:[&>p]:leading-10"
         ref={ref}
         {...otherProps}
       >
@@ -300,6 +300,7 @@ const portableTextComponents: Partial<PortableTextReactComponents> = {
     h3: (props) => <ProseH3>{props.children}</ProseH3>,
     h4: (props) => <ProseH4>{props.children}</ProseH4>,
     normal: (props) => <ProseP>{props.children}</ProseP>,
+    blockquote: (props) => <ProseBlockquote>{props.children}</ProseBlockquote>,
   },
   list: {
     bullet: (props) => <ProseUL>{props.children}</ProseUL>,

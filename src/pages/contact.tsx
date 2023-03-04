@@ -20,7 +20,7 @@ export default function Home({
         image={"/home.png"}
       />
       <Layout bio={bio} services={services}>
-        <section className="container-width space-y-12 py-12">
+        <section className="container-width space-y-12 py-16">
           <Contact bio={bio} page={pages[4]} />
         </section>
       </Layout>

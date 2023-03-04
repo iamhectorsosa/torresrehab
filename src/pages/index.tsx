@@ -28,7 +28,7 @@ export default function Home({
     <>
       <Meta />
       <Layout bio={bio} services={services}>
-        <div className="container-width space-y-12 py-12">
+        <div className="container-width space-y-12 py-16">
           <Bio bio={bio} />
           <Services services={services} page={pages[0]} />
           <Incentives incentives={incentives} limit={3} page={pages[1]} />
