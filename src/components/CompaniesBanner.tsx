@@ -4,7 +4,7 @@ export default function CompaniesBanner() {
   return (
     <div className="grid place-content-center gap-4 pb-3">
       <ProseSmall className="text-center opacity-70 font-bold uppercase tracking-wider">
-        Specialized from the following institutes
+        Accredited from the following institutes
       </ProseSmall>
       <div className="flex flex-wrap items-center justify-center gap-6">
         {/* eslint-disable-next-line @next/next/no-img-element */}

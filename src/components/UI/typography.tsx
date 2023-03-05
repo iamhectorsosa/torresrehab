@@ -47,7 +47,7 @@ const ProseH2 = forwardRef<HTMLHeadingElement, ComponentPropsWithoutRef<"h2">>(
         id={id}
         className={cn(
           "font-headings scroll-m-32 text-3xl font-bold tracking-tight lg:text-4xl",
-          cn
+          className
         )}
         ref={ref}
         {...otherProps}
@@ -156,7 +156,7 @@ const ProseP = forwardRef<HTMLParagraphElement, ComponentPropsWithoutRef<"p">>(
     return (
       <p
         className={cn(
-          "text-lg font-light leading-loose [&:not(:first-child)]:mt-4",
+          "text-lg leading-loose [&:not(:first-child)]:mt-4",
           className
         )}
         ref={ref}
@@ -188,7 +188,7 @@ const ProseSmall = forwardRef<HTMLElement, ComponentPropsWithoutRef<"small">>(
     const { children, ...otherProps } = props;
     return (
       <small
-        className="text-sm leading-relaxed block"
+        className="text-sm font-medium leading-relaxed block"
         ref={ref}
         {...otherProps}
       >
@@ -260,7 +260,7 @@ const ProseUL = forwardRef<HTMLUListElement, ComponentPropsWithoutRef<"ul">>(
     const { children, ...otherProps } = props;
     return (
       <ul
-        className="my-2 ml-4 list-inside list-disc text-lg font-light leading-loose marker:text-slate-500 [&>li]:mt-2 [&>li>p]:inline"
+        className="my-2 ml-4 list-inside list-disc text-lg leading-loose marker:text-slate-500 [&>li]:mt-2 [&>li>p]:inline"
         ref={ref}
         {...otherProps}
       >

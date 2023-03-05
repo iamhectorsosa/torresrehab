@@ -37,8 +37,8 @@ export default function Component({
 
   return (
     <section className="space-y-8 bg-gray-50 dark:bg-slate-800 py-9 px-6 md:p-9 rounded">
-      <article className="space-y-6">
-        <header className="text-center space-y-2">
+      <article className="space-y-2 lg:space-y-9">
+        <header className="text-center">
           <ProseH1>
             {mutation.isSuccess ? "Thank you for your message" : page.headline}
           </ProseH1>

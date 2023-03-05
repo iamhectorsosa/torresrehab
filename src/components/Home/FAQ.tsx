@@ -69,7 +69,7 @@ export default function Component({
         {limit ? (
           <Link tabIndex={-1} href="/faq">
             <Button variant="subtle" size="lg">
-              Red more Frequently Asked Questions
+              Read more Frequently Asked Questions
             </Button>
           </Link>
         ) : (

@@ -54,7 +54,7 @@ export default function AppointmentModal() {
           <ProseH2>
             {mutation.isSuccess
               ? "Thank you for your message"
-              : " These appointments are scheduled only at request"}
+              : " These appointments are scheduled upon request"}
           </ProseH2>
           <ProseP>
             {mutation.isSuccess

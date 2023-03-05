@@ -15,7 +15,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  @apply bg-white dark:bg-slate-900 dark:text-white text-slate-900;
+  @apply bg-white dark:bg-slate-900 dark:text-white text-slate-900 font-sans;
 }
 
 * {

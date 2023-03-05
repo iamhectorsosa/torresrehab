@@ -18,34 +18,48 @@ export default function Component({
           <ProseH1>{page.headline}</ProseH1>
           <ProseLead>{page.tagline}</ProseLead>
         </header>
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div>
           {services.map((i, index) => (
-            <Link
-              href={`/services#${i.name.toLowerCase().replaceAll(" ", "-")}`}
-              key={index}
-              className="rounded overflow-hidden shadow hover:shadow-lg transition-shadow dark:border dark:border-slate-600 dark:hover:border-slate-500 dark:transition-colors"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                alt={i.name}
-                src={i.image}
-                className="max-h-60 w-full object-cover"
-              />
-              <div className="space-y-3 p-4">
-                <ProseH2>{i.name}</ProseH2>
-                <ProseSubtle>{i.tagline}</ProseSubtle>
+            <div className="" key={index}>
+              <div className="grid lg:grid-cols-2 lg:place-content-center py-9">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  alt={i.name}
+                  src={i.image}
+                  className="rounded lg:h-[450px] w-full max-w-none lg:max-w-sm object-cover md:mx-auto shadow-xl"
+                />
+
+                <div className="space-y-4 py-6 md:text-center lg:text-left">
+                  <span className="text-5xl text-slate-900 font-bold font-headings inline mr-2 opacity-75">
+                    0{index + 1}
+                  </span>
+                  <Link
+                    href={`/services#${i.name
+                      .toLowerCase()
+                      .replaceAll(" ", "-")}`}
+                  >
+                    <ProseH2 className="text-5xl lg:text-6xl inline lg:block ">
+                      {i.name}
+                    </ProseH2>
+                  </Link>
+                  <ProseLead>{i.tagline}</ProseLead>
+                  <Link
+                    className="block"
+                    tabIndex={-1}
+                    href={`/services#${i.name
+                      .toLowerCase()
+                      .replaceAll(" ", "-")}`}
+                  >
+                    <Button variant="subtle" size="lg">
+                      Learn More
+                    </Button>
+                  </Link>
+                </div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </article>
-      <footer className="grid place-content-center">
-        <Link tabIndex={-1} href="/services">
-          <Button variant="subtle" size="lg">
-            Explore our services
-          </Button>
-        </Link>
-      </footer>
     </section>
   );
 }

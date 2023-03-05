@@ -113,7 +113,7 @@ export default function Navbar({}: {}) {
               tabIndex={-1}
               target="_blank"
               rel="noreferrer"
-              href="https://hectorsosa.me"
+              href="https://buk.pt/torresrehab"
             >
               <Button className="hidden lg:inline-flex">Book Now</Button>
             </a>
