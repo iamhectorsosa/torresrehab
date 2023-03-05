@@ -121,10 +121,7 @@ const ProseLead = forwardRef<
   const { children, className, ...otherProps } = props;
   return (
     <p
-      className={cn(
-        "text-xl font-medium leading-relaxed opacity-80",
-        className
-      )}
+      className={cn("text-xl font-medium leading-normal opacity-80", className)}
       ref={ref}
       {...otherProps}
     >

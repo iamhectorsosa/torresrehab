@@ -4,6 +4,7 @@ import { PortableText } from "@portabletext/react";
 import Link from "next/link";
 
 import { Button } from "../UI/button";
+import ResizablePanel from "../UI/resizablePanel";
 import {
   portableTextComponents,
   ProseH1,
@@ -29,35 +30,38 @@ export default function Component({
         </header>
         <div className="space-y-4">
           {questions.slice(0, limit ?? undefined).map((i, index) => (
-            <details
-              key={index}
-              className="group [&_summary::-webkit-details-marker]:hidden"
-              open={i.expanded}
-            >
-              <summary className="flex items-center justify-between p-4 rounded-lg cursor-pointer bg-gray-50 dark:bg-slate-800">
-                <ProseH4>{i.question}</ProseH4>
-                <svg
-                  className="ml-1.5 h-5 w-5 flex-shrink-0 transition duration-300 group-open:-rotate-180"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+            <div key={index}>
+              <ResizablePanel>
+                <details
+                  className="group [&_summary::-webkit-details-marker]:hidden"
+                  open={limit ? false : i.expanded}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </summary>
-              <div className="p-4">
-                <PortableText
-                  value={i.answer}
-                  components={portableTextComponents}
-                />
-              </div>
-            </details>
+                  <summary className="flex items-center justify-between p-4 rounded-lg cursor-pointer bg-gray-50 dark:bg-slate-800">
+                    <ProseH4>{i.question}</ProseH4>
+                    <svg
+                      className="ml-1.5 h-5 w-5 flex-shrink-0 transition duration-300 group-open:-rotate-180"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </summary>
+                  <div className="p-4">
+                    <PortableText
+                      value={i.answer}
+                      components={portableTextComponents}
+                    />
+                  </div>
+                </details>
+              </ResizablePanel>
+            </div>
           ))}
         </div>
       </article>
@@ -65,7 +69,7 @@ export default function Component({
         {limit ? (
           <Link tabIndex={-1} href="/faq">
             <Button variant="subtle" size="lg">
-              Go to our Frequently Asked Questions
+              Red more Frequently Asked Questions
             </Button>
           </Link>
         ) : (

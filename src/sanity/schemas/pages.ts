@@ -23,13 +23,13 @@ const pages = {
       name: "order",
       title: "Order",
       type: "number",
-      readOnly: true,
+      // readOnly: true,
     },
     {
       name: "title",
       title: "Title",
       type: "string",
-      readOnly: true,
+      // readOnly: true,
     },
     {
       name: "headline",
