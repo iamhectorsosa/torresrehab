@@ -21,16 +21,16 @@ export default function Component({
         <div>
           {services.map((i, index) => (
             <div className="" key={index}>
-              <div className="grid lg:grid-cols-2 lg:place-content-center py-9">
+              <div className="grid md:grid-cols-2 md:place-content-center mb-6 md:gap-6">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   alt={i.name}
                   src={i.image}
-                  className="rounded lg:h-[450px] w-full max-w-none lg:max-w-sm object-cover md:mx-auto shadow-xl"
+                  className="rounded md:h-[450px] w-full max-w-none md:max-w-sm object-cover md:mx-auto shadow-xl"
                 />
 
-                <div className="space-y-4 py-6 md:text-center lg:text-left">
-                  <span className="text-5xl text-slate-900 font-bold font-headings inline mr-2 opacity-75">
+                <div className="space-y-4 py-6 text-left">
+                  <span className="block text-5xl text-slate-900 font-bold font-headings md:inline mr-2 opacity-75">
                     0{index + 1}
                   </span>
                   <Link
@@ -38,7 +38,7 @@ export default function Component({
                       .toLowerCase()
                       .replaceAll(" ", "-")}`}
                   >
-                    <ProseH2 className="text-5xl lg:text-6xl inline lg:block ">
+                    <ProseH2 className="text-5xl md:text-6xl inline md:block ">
                       {i.name}
                     </ProseH2>
                   </Link>

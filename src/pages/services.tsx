@@ -36,7 +36,7 @@ export default function Home({
               <ProseH1>{pages[0].headline}</ProseH1>
               <ProseLead>{pages[0].tagline}</ProseLead>
             </header>
-            <div>
+            <div className="space-y-6">
               {services.map((i, index) => (
                 <div key={index} className="space-y-4 md:space-y-6 py-4">
                   <header className="flex flex-col justify-center sm:items-center gap-2">
@@ -80,7 +80,7 @@ export default function Home({
                         )}
                       </div>
                     </div>
-                    <div className="py-2 md:max-h-[27.5rem] md:overflow-scroll">
+                    <div className="py-2 max-h-[23rem] overflow-hidden">
                       <PortableText
                         value={i.description}
                         components={portableTextComponents}

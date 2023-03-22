@@ -75,17 +75,29 @@ export default function Navbar({}: {}) {
                   <NavigationMenuTrigger>Services</NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid gap-3 p-6 w-[500px]">
-                      <ListItem href="/services" title="Osteopathy">
+                      <ListItem
+                        href={`/services#${"Osteopathy"
+                          .toLowerCase()
+                          .replaceAll(" ", "-")}`}
+                        title="Osteopathy"
+                      >
                         Diagnosis and treatment for a wide range of medical
                         conditions
                       </ListItem>
                       <ListItem
-                        href="/services"
+                        href={`/services#${"1-1 Clinical Pilates Premium"
+                          .toLowerCase()
+                          .replaceAll(" ", "-")}`}
                         title="1-1 Clinical Pilates Premium"
                       >
                         Based on Dynamic Neuromuscular Stabilization (DNS)
                       </ListItem>
-                      <ListItem href="/services" title="Personal Training">
+                      <ListItem
+                        href={`/services#${"Personal Training"
+                          .toLowerCase()
+                          .replaceAll(" ", "-")}`}
+                        title="Personal Training"
+                      >
                         1-1 sessions focused on mobility training and strength
                       </ListItem>
                     </ul>
@@ -254,7 +266,7 @@ export default function Navbar({}: {}) {
               tabIndex={-1}
               target="_blank"
               rel="noreferrer"
-              href="https://hectorsosa.me"
+              href="https://buk.pt/torresrehab"
             >
               <Button
                 className="w-full text-3xl font-zilla py-8 px-6"
