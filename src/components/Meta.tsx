@@ -46,11 +46,7 @@ const Meta = ({
       <meta property="twitter:description" content={description} />
       <meta property="twitter:image" content={image} />
 
-      <script
-        defer
-        data-domain="torresrehab.com"
-        src="https://plausible.io/js/script.js"
-      ></script>
+      <script defer data-domain="torresrehab.com" src="/js/script.js"></script>
     </Head>
   );
 };
