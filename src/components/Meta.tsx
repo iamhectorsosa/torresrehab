@@ -49,8 +49,7 @@ const Meta = ({
       <script
         defer
         data-domain="torresrehab.com"
-        src="/stats/js/script.js"
-        data-api="/stats/api/event"
+        src="https://plausible.io/js/script.js"
       ></script>
     </Head>
   );
