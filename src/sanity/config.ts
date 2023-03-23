@@ -3,7 +3,6 @@ import { deskTool } from "sanity/desk";
 
 import about from "./schemas/about";
 import faqs from "./schemas/faqs";
-import incentives from "./schemas/incentives";
 import messages from "./schemas/messages";
 import pages from "./schemas/pages";
 import reviews from "./schemas/reviews";
@@ -23,7 +22,7 @@ export default defineConfig({
   dataset: sanityConfig.dataset,
   title: "Torres Rehab",
   schema: {
-    types: [about, faqs, incentives, messages, pages, reviews, services],
+    types: [about, faqs, messages, pages, reviews, services],
   },
   plugins: [deskTool()],
   document: {

@@ -16,6 +16,7 @@ import {
 } from "@/components/UI/navigation-menu";
 import React from "react";
 import { cn } from "@/lib/utils";
+import { Services } from "@/sanity/schemas/services";
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
@@ -43,7 +44,7 @@ const ListItem = React.forwardRef<
 });
 ListItem.displayName = "ListItem";
 
-export default function Navbar({}: {}) {
+export default function Navbar({ services }: { services: Services[] }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <motion.nav
@@ -62,50 +63,30 @@ export default function Navbar({}: {}) {
           >
             <NavigationMenu>
               <NavigationMenuList>
-                <NavigationMenuItem>
-                  <Link href="/about" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
-                    >
-                      About me
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger>Services</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid gap-3 p-6 w-[500px]">
-                      <ListItem
-                        href={`/services#${"Osteopathy"
-                          .toLowerCase()
-                          .replaceAll(" ", "-")}`}
-                        title="Osteopathy"
-                      >
-                        Diagnosis and treatment for a wide range of medical
-                        conditions
-                      </ListItem>
-                      <ListItem
-                        href={`/services#${"1-1 Clinical Pilates Premium"
-                          .toLowerCase()
-                          .replaceAll(" ", "-")}`}
-                        title="1-1 Clinical Pilates Premium"
-                      >
-                        Based on Dynamic Neuromuscular Stabilization (DNS)
-                      </ListItem>
-                      <ListItem
-                        href={`/services#${"Personal Training"
-                          .toLowerCase()
-                          .replaceAll(" ", "-")}`}
-                        title="Personal Training"
-                      >
-                        1-1 sessions focused on mobility training and strength
-                      </ListItem>
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-                {navItems
-                  .filter((i) => i.href !== "/services")
-                  .map(({ href, label }, index) => (
+                {navItems.map(({ href, label }, index) => {
+                  if (label === "Services") {
+                    return (
+                      <NavigationMenuItem key={index}>
+                        <NavigationMenuTrigger>{label}</NavigationMenuTrigger>
+                        <NavigationMenuContent>
+                          <ul className="grid gap-3 p-6 w-[500px]">
+                            {services.map((i) => (
+                              <ListItem
+                                key={i.name}
+                                href={`/services#${i.name
+                                  .toLowerCase()
+                                  .replaceAll(" ", "-")}`}
+                                title={i.name}
+                              >
+                                {i.tagline}
+                              </ListItem>
+                            ))}
+                          </ul>
+                        </NavigationMenuContent>
+                      </NavigationMenuItem>
+                    );
+                  }
+                  return (
                     <NavigationMenuItem key={index}>
                       <Link href={href} legacyBehavior passHref>
                         <NavigationMenuLink
@@ -115,7 +96,8 @@ export default function Navbar({}: {}) {
                         </NavigationMenuLink>
                       </Link>
                     </NavigationMenuItem>
-                  ))}
+                  );
+                })}
               </NavigationMenuList>
             </NavigationMenu>
           </nav>
@@ -183,35 +165,6 @@ export default function Navbar({}: {}) {
           aria-label="Site Nav"
           className="flex flex-col p-4 gap-4"
         >
-          <motion.li
-            variants={{
-              open: {
-                y: 0,
-                opacity: 1,
-                transition: {
-                  y: { stiffness: 1000, velocity: -100 },
-                },
-              },
-              closed: {
-                y: 50,
-                opacity: 0,
-                transition: {
-                  y: { stiffness: 1000 },
-                },
-              },
-            }}
-          >
-            <Link tabIndex={-1} href="about">
-              <Button
-                className="w-full text-3xl font-zilla py-8 px-6"
-                size="lg"
-                variant="ghost"
-                onClick={() => setIsOpen(!isOpen)}
-              >
-                <ProseH2>About Me</ProseH2>
-              </Button>
-            </Link>
-          </motion.li>
           {navItems.map(({ href, label }, index) => (
             <motion.li
               key={index}

@@ -1,7 +1,6 @@
 import sanity from "./client";
 import { About } from "./schemas/about";
 import { Questions } from "./schemas/faqs";
-import { Incentives } from "./schemas/incentives";
 import { Pages } from "./schemas/pages";
 import { Reviews } from "./schemas/reviews";
 import { Services } from "./schemas/services";
@@ -57,23 +56,6 @@ const allServices = `*[_type == "services" && !(_id in path("drafts.**"))] | ord
 
 export async function getServices(): Promise<Services[]> {
   return await sanity.fetch(allServices);
-}
-
-const incentivesFields = `{
-    order,
-    name,
-    tagline,
-    description,
-    'image': image.asset->url,
-    location,
-    time,
-    href
-}`;
-
-const allIncentives = `*[_type == "incentives" && !(_id in path("drafts.**"))] | order(order asc) ${incentivesFields}`;
-
-export async function getIncentives(): Promise<Incentives[]> {
-  return await sanity.fetch(allIncentives);
 }
 
 const reviewsFields = `{

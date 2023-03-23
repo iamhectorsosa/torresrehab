@@ -131,11 +131,6 @@ export default function Footer({
             </ProseSmall>
 
             <ul className="space-y-4">
-              <li>
-                <Link className=" transition hover:opacity-75" href={`/about`}>
-                  <ProseSmall>About me</ProseSmall>
-                </Link>
-              </li>
               {navItems
                 .filter(({ label }) => label !== "Services")
                 .map(({ href, label }, index) => (

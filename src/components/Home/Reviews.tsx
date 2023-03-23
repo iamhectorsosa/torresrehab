@@ -1,89 +1,93 @@
 import { Pages } from "@/sanity/schemas/pages";
 import { Reviews } from "@/sanity/schemas/reviews";
-import Link from "next/link";
+import { useState } from "react";
 import { Button } from "../UI/button";
+import { SlidePanel } from "../UI/slidePanel";
 import { ProseH1, ProseLead, ProseP, ProseSubtle } from "../UI/typography";
 
 export default function Component({
   reviews,
-  limit,
   page,
 }: {
   reviews: Reviews[];
-  limit?: number;
   page: Pages[number];
 }) {
+  const [count, setCount] = useState(0);
   return (
-    <section
-      className={`bg-gray-50 dark:bg-slate-800 rounded px-4 sm:px-6 ${
-        limit ? "space-y-6 py-8" : "space-y-8 py-12"
-      }`}
-    >
-      <header className="md:text-center space-y-2">
-        <ProseH1>{page.headline}</ProseH1>
-        <ProseLead>{page.tagline}</ProseLead>
-      </header>
-      {limit ? (
-        <div className="lg:col-span-2 lg:mx-0">
-          <div className="carousel gap-4">
-            {reviews.slice(0, limit).map((i, index) => (
-              <div key={index} className="carousel-item h-fit">
-                <blockquote className="max-w-xs sm:max-w-md bg-white dark:bg-slate-700/75 p-6">
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-bold text-pink-500 dark:text-white sm:text-2xl">
-                      {i.title}
-                    </h3>
-                    <div className="line-clamp-6">
-                      <ProseP>{i.message}</ProseP>
-                    </div>
-                    <ProseSubtle>
-                      - <span className="uppercase">{i.name}</span>
-                    </ProseSubtle>
-                  </div>
-                </blockquote>
-              </div>
-            ))}
-          </div>
-        </div>
-      ) : (
-        <div className="grid gap-4">
-          {reviews.map((i, index) => (
-            <div key={index}>
-              <blockquote className="bg-white dark:bg-slate-700/75 p-10 rounded">
-                <div className="space-y-4">
-                  <h3 className="text-xl font-bold text-pink-500 dark:text-white sm:text-2xl">
-                    {i.title}
-                  </h3>
-                  <ProseP>{i.message}</ProseP>
-                  <ProseSubtle>
-                    - <span className="uppercase">{i.name}</span>
-                  </ProseSubtle>
-                </div>
-              </blockquote>
+    <>
+      <section className="bg-gray-50 dark:bg-slate-800 rounded px-4 sm:px-6 space-y-6 py-8">
+        <header className="md:text-center space-y-2">
+          <ProseH1>{page.headline}</ProseH1>
+          <ProseLead>{page.tagline}</ProseLead>
+        </header>
+        <SlidePanel>
+          <blockquote className=" bg-white dark:bg-slate-700/75 p-6">
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-pink-500 dark:text-white sm:text-2xl">
+                {reviews[count].title}
+              </h3>
+              <ProseP>{reviews[count].message}</ProseP>
+              <ProseSubtle>
+                - <span className="uppercase">{reviews[count].name}</span>
+              </ProseSubtle>
             </div>
-          ))}
+          </blockquote>
+        </SlidePanel>
+        <div className="flex lg:justify-center gap-2">
+          <Button
+            onClick={() => {
+              if (count === 0) {
+                setCount(reviews.length - 1);
+              } else {
+                setCount(count - 1);
+              }
+            }}
+            variant="subtle"
+            className="rounded-full h-12 w-12"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-5 h-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+              />
+            </svg>
+          </Button>
+          <Button
+            onClick={() => {
+              if (count === reviews.length - 1) {
+                setCount(0);
+              } else {
+                setCount(count + 1);
+              }
+            }}
+            variant="subtle"
+            className="rounded-full h-12 w-12"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-5 h-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+              />
+            </svg>
+          </Button>
         </div>
-      )}
-      <footer className="grid place-content-center gap-6 justify-items-center">
-        {limit ? (
-          <Link tabIndex={-1} href="/reviews">
-            <Button variant="subtle" size="lg">
-              Read the full reviews
-            </Button>
-          </Link>
-        ) : (
-          <>
-            <ProseLead>
-              More questions? Send us a message using the button below
-            </ProseLead>
-            <Link tabIndex={-1} href="/contact">
-              <Button variant="subtle" size="lg">
-                Send a message
-              </Button>
-            </Link>
-          </>
-        )}
-      </footer>
-    </section>
+      </section>
+    </>
   );
 }

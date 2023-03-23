@@ -3,7 +3,7 @@ import { type Services } from "@/sanity/schemas/services";
 import Link from "next/link";
 
 import { Button } from "../UI/button";
-import { ProseH1, ProseH2, ProseLead, ProseSubtle } from "../UI/typography";
+import { ProseH1, ProseH2, ProseLead } from "../UI/typography";
 export default function Component({
   services,
   page,

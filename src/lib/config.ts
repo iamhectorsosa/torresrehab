@@ -2,12 +2,12 @@ import type { NavLink } from "./types";
 
 export const navItems: Array<NavLink> = [
   {
-    label: "Services",
-    href: "/services",
+    label: "About me",
+    href: "/about",
   },
   {
-    label: "Reviews",
-    href: "/reviews",
+    label: "Services",
+    href: "/services",
   },
   {
     label: "FAQ",

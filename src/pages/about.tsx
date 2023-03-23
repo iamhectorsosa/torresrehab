@@ -14,6 +14,8 @@ import {
   ProseSubtle,
 } from "@/components/UI/typography";
 import CompaniesBanner from "@/components/CompaniesBanner";
+import Link from "next/link";
+import { Button } from "@/components/UI/button";
 
 export default function Home({
   bio,
@@ -23,11 +25,13 @@ export default function Home({
   return (
     <>
       <Meta
-        title={pages[4].title}
-        keywords={pages[4].keywords}
-        description={pages[4].description}
+        title={"About me"}
+        keywords={"Torres Rehab, Fabio Torres, Osteopathy"}
+        description={
+          "Specialized in Neurokinetic Therapy and Dynamic Neuromuscular stabilization rehabilitation"
+        }
         baseUrl={"https://torres-rehab.vercel.app"}
-        path={"/contact"}
+        path={"/about"}
         image={"/home.png"}
       />
       <Layout bio={bio} services={services}>
@@ -53,6 +57,16 @@ export default function Home({
               components={portableTextComponents}
             />
           </div>
+          <footer className="grid place-content-center gap-6 justify-items-center">
+            <ProseLead>
+              More questions? Send us a message using the button below
+            </ProseLead>
+            <Link tabIndex={-1} href="/contact">
+              <Button variant="subtle" size="lg">
+                Send a message
+              </Button>
+            </Link>
+          </footer>
         </div>
       </Layout>
     </>

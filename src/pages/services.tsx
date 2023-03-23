@@ -1,7 +1,6 @@
 import { InferGetStaticPropsType } from "next";
-import Incentives from "../components/Home/Incentives";
 import Meta from "../components/Meta";
-import { getBio, getIncentives, getPages, getServices } from "@/sanity/queries";
+import { getBio, getPages, getReviews, getServices } from "@/sanity/queries";
 import { PortableText } from "@portabletext/react";
 import { Button } from "@/components/UI/button";
 import Layout from "@/components/Layout/Layout";
@@ -12,12 +11,14 @@ import {
   ProseLead,
   ProseSmall,
 } from "@/components/UI/typography";
+import Reviews from "@/components/Home/Reviews";
+import Link from "next/link";
 
 export default function Home({
   bio,
   pages,
   services,
-  incentives,
+  reviews,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
@@ -51,9 +52,9 @@ export default function Home({
                       </div>
                     </ProseSmall>
                   </header>
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <div className="flex flex-col items-start lg:flex-row gap-4">
                     <div
-                      className={`space-y-4 ${
+                      className={`space-y-4 lg:w-[50%] lg:sticky lg:top-32 ${
                         index % 2 === 0 ? "md:order-last" : ""
                       }`}
                     >
@@ -80,7 +81,7 @@ export default function Home({
                         )}
                       </div>
                     </div>
-                    <div className="py-2 max-h-[23rem] overflow-hidden">
+                    <div className="py-2 lg:w-[50%]">
                       <PortableText
                         value={i.description}
                         components={portableTextComponents}
@@ -90,10 +91,18 @@ export default function Home({
                 </div>
               ))}
             </div>
-            <div className="py-6">
-              <Incentives incentives={incentives} page={pages[1]} />
-            </div>
           </div>
+          <Reviews reviews={reviews} page={pages[2]} />
+          <footer className="grid place-content-center gap-6 justify-items-center">
+            <ProseLead>
+              More questions? Send us a message using the button below
+            </ProseLead>
+            <Link tabIndex={-1} href="/contact">
+              <Button variant="subtle" size="lg">
+                Send a message
+              </Button>
+            </Link>
+          </footer>
         </section>
       </Layout>
     </>
@@ -104,14 +113,14 @@ export async function getStaticProps() {
   const bio = await getBio();
   const pages = await getPages();
   const services = await getServices();
-  const incentives = await getIncentives();
+  const reviews = await getReviews();
 
   return {
     props: {
       bio,
       pages,
       services,
-      incentives,
+      reviews,
     },
     revalidate: 60,
   };

@@ -15,7 +15,7 @@ export default function Layout({
 }) {
   return (
     <MotionConfig transition={{ duration: 0.4 }}>
-      <Navbar />
+      <Navbar services={services} />
       {children}
       <Footer bio={bio} services={services} />
     </MotionConfig>
