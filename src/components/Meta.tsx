@@ -49,8 +49,8 @@ const Meta = ({
       <script
         defer
         data-domain="torresrehab.com"
-        data-api="/api/event"
-        src="/js/script.js"
+        src="/stats/js/script.js"
+        data-api="/stats/api/event"
       ></script>
     </Head>
   );
